@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Pin</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+        html, body {
+            background-color: #2948FF;
+            font-family: "Montserrat", sans-serif;
+            display: flex;
+            flex-direction: row;
+            justify-items: center;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+        .left {
+            background-color: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-top-right-radius: 40px;
+            border-bottom-right-radius: 40px;
+            width: 40%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0px 50px; /*coba cari cara biar nengah tanpa pake padding*/
+            gap: 15px;
+        }
+        .right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            height: 100%;
+        }
+        .right>img {
+            position: absolute;
+            bottom: 0;
+            width: 70svh;
+            height: 70svh;
+        }
+        .logo {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: left;
+            gap: 15px;
+        }
+        .logo>img {
+            width: 22px;
+            height: 22px;
+        }
+        .logo>span{
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2948FF;
+        }
+        .left>div:nth-child(6)>span {
+            text-align: center;
+            color: #AAAAAA;
+            font-size: 10px;
+            width: 180px;
+        }
+        input {
+            border: 0px;
+            width: 90%;
+            font-size: 10px;
+        }
+        button.submit {
+            border: 1px solid #2948FF;
+            border-radius: 6px;
+            background-color: #2948FF;
+            color: #FFFFFF;
+            height: 35px;
+            font-size: 12px;
+        }
+        div.left>span:nth-child(2) {
+            font-size: 21px;
+            font-weight: 500;
+        }
+        div.left>span:nth-child(3) {            
+            font-size: 12px;
+            font-weight: 400;
+            color:#4F5665;
+        }
+        .left>span:last-child {
+            align-self: center;
+            font-size: 10px;
+        }
+        .pincode {
+            display: flex;
+            justify-content: space-between;
+            height: 80px;
+            margin-bottom: 30px;
+            transition: all 0.1s;
+        }
+        input {
+            font-size: 50px;
+            text-align: center;
+            width: 60px;
+            border-bottom: 2px solid #E8E8E8;
+        }
+        input:focus {
+            outline: none;
+            border-bottom: 2px solid #2948FF;
+        }
+    </style>
+</head>
+<body>
+    <div class="left">
+        <div class="logo">
+            <img src="../assets/logo.png" alt="Logo">
+            <span>E-Wallet</span>
+        </div>
+        <span>Enter Your Pin &#128075;</span>
+        <span>Please save your pin because this is so important</span>
+        <div class="pincode">
+            <input type="password" inputmode="numeric" maxlength="1" id="pin1">
+            <input type="password" inputmode="numeric" maxlength="1" id="pin2">
+            <input type="password" inputmode="numeric" maxlength="1" id="pin3">
+            <input type="password" inputmode="numeric" maxlength="1" id="pin4">
+            <input type="password" inputmode="numeric" maxlength="1" id="pin5">
+            <input type="password" inputmode="numeric" maxlength="1" id="pin6">
+        </div>
+        <button class="submit" value="validatePin">Submit</button>
+        <span>Forgot Your Pin? <a href="./change-pin.html" style="text-decoration: none;">Register</a></span>
+    </div>
+    <div class="right">
+        <img src="../assets/orang.png" alt="Icon e-Wallet">
+    </div>
+</body>
+</html>
