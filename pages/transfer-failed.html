@@ -6,7 +6,266 @@
     <title>Transfer Page</title>
     <link rel="stylesheet" href="dashboard-style.css">
     <style>
-       
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+        html, body {
+            font-family: "Montserrat", sans-serif;
+        }
+        .dropdown:hover>div.dropdown-content {
+            display: none;
+        }
+        nav>button:nth-child(2) {
+            background-color: #2948FF;
+            border: 1px solid #2948FF;
+            border-radius: 5px;
+            color: #FFFFFF;
+            font-size: 14px;
+        }
+        nav>button:nth-child(2)>img {
+            width: 13px;
+            height: 13px;
+        }
+        nav>button:nth-child(1) {
+            background-color: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-radius: 5px;
+            color: #4F5665;
+        }
+        nav>button:hover {
+            background-color: #2948FF;
+            border: 1px solid #2948FF;
+            border-radius: 5px;
+            color: #FFFFFF;
+        }
+        nav>button:hover img.db {
+            content: url('../assets/dashboard-white.png');
+        }
+        div.content {
+            display:flex;
+            flex-direction: column;
+            gap: 5px;
+            box-sizing: border-box;
+            width: 80svw;
+            height: 90svh;
+            padding: 20px;
+            position: relative;
+        }
+        div.content>div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 70svw;
+            height: 7svh;
+            gap: 10px;
+        }
+        div.content>div:last-child {
+            flex-direction: column;
+            align-items: flex-start;
+            box-sizing: border-box;
+            height: 71svh;
+            border: 1px solid #E8E8E8;
+            padding: 20px;
+        }
+        div.content>div:first-child>img {
+            width: 17px;
+            height: 17px;
+        }
+        div.content>div:first-child>span {
+            font-size: 15px;
+            font-weight: 600;
+        }
+        div.info>div {
+            width: 65svw;
+        }
+        div.info>span {
+            font-weight: 600;
+            font-size: 18px;
+        }
+        div.info>div:nth-child(2) {
+            display: flex;
+            box-sizing: border-box;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #E8E8E84D;
+            padding: 10px;
+            height: 70px;
+        }
+        div.info>div:nth-child(2)>div>img {
+            width: 48px;
+            height: 48px;
+        }
+        div.info>div:nth-child(2)>div>div {
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-items: flex-start;
+            gap: 5px;
+            font-size: 10px;
+        }
+        div.info>div:nth-child(2)>div>div>div:last-child {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 5px;
+            padding: 2px;
+            background-color: #2948FF;
+            color: white;
+            border: 1px solid #2948FF;
+            border-radius: 5px;
+        }
+        div.info>div:nth-child(2)>div {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            justify-items: flex-start;
+        }
+        div.info>div:nth-child(2)>img {
+            width: 15px;
+            height: 15px;
+        }
+        div.info>div.sub {
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-items: flex-start;
+            gap: 3px;
+        }
+        div.info>div.sub>span:first-child {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        div.info>div.sub>span:last-child {
+            font-size: 10px;
+            font-weight: 300;
+        }
+        div.info>div:nth-child(4) {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-items: flex-start;
+            border: 1px solid #E8E8E8;
+            box-sizing: border-box;
+            padding: 3px 5px;
+            height: 25px;
+            gap: 5px;
+        }
+        div.info>div:nth-child(6) {
+            border: 1px solid #E8E8E8;
+            box-sizing: border-box;
+            padding: 3px 5px;
+            flex-grow: 1;
+            height: 75px;
+        }
+        div.info>button:last-child {
+            box-sizing: border-box;
+            width: 100%;
+            color:#FFFFFF;
+            background-color: #2948FF;
+            border: 1px solid #2948FF;
+            border-radius: 5px;
+            height: 20px;
+            font-size: 10px;
+            font-family: "Montserrat", sans-serif;
+        }
+        input {
+            outline: none;
+            border: none;
+            font-size: 10px;
+        }
+        div.content>div.modal {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            overflow:hidden;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        div.content>div.modal>div {
+            width: 40%;
+            height: 65%;
+            background-color: white;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            box-sizing: border-box;
+            padding: 15px;
+        }
+        div.content>div.modal>div>div{
+            width: 100%;
+            height: 100%;
+        }
+        .pincode {
+            display: flex;
+            justify-content: space-between;
+            height: 80px;
+            margin-bottom: 30px;
+            width: 100%;
+            transition: all 0.1s;
+        }
+        .pincode>input {
+            font-size: 30px;
+            text-align: center;
+            width: 35px;
+            border-bottom: 2px solid #E8E8E8;
+        }
+        .pincode>input:focus {
+            outline: none;
+            border-bottom: 2px solid #2948FF;
+        }
+        div.main>div.content>div.modal>div>span:first-child {
+            border-bottom: 1px solid #E8E8E8;
+            width: 100%;
+            font-size: 12px;
+            color:#4F5665;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+        div.main>div.content>div.modal>div>div:nth-child(2) {
+            display: flex;
+            flex-direction: column;
+            gap:5px;
+        }
+        div.modal>div>div:nth-child(2)>span:first-child{
+            font-size: 18px;
+            font-weight: 600;
+        }
+        div.modal>div>div:nth-child(2)>span:nth-child(2){
+            font-size: 12px;
+            font-weight: 400;
+            color:#4F5665;
+        }
+        div.modal>div>div:last-child {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            width: 100%;
+        }
+        div.modal>div>div:last-child>button {
+            background-color: #2948FF;
+            box-sizing: border-box;
+            border: 1px solid #2948FF;
+            border-radius: 10px;
+            color: #FFFFFF;
+            font-size: 12px;
+            width: 100%;
+            height: 30px;
+            font-family: "Montserrat", sans-serif;
+        }
+        div.modal>div>div:last-child>span {
+            font-size: 10px;
+        }
     </style>
 </head>
 <body>
@@ -27,14 +286,82 @@
     </header>
     <div class="main">
         <nav>
-            <button><img src="../assets/dashboard-white.png" alt="icon-dashboard" class="db">Dashboard</button>
-            <button onclick="window.location.href='transfer.html'"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
+            <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
+            <button><img src="../assets/send-white.png" alt="icon-transfer" class="tf">Transfer</button>
             <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
             <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
             <button onclick="window.location.href='edit-profile.html'"><img src="../assets/two-user.png" alt="icon-two-user" class="pf">Profile</button>
             <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
         </nav>
         <div class="content">
+            <div>
+                <img src="../assets/send-blue.png" alt="icon-transfer">
+                <span>Transfer Money</span>
+            </div>
+            <div>
+                <img src="../assets/step1-off.png" alt="icon-step1">
+                <span>Find People</span>
+                <img src="../assets/dashed.png" alt="icon-dashed">
+                <img src="../assets/step2-off.png" alt="icon-step2">
+                <span>Set Nominal</span>
+                <img src="../assets/dashed.png" alt="icon-dashed">
+                <img src="../assets/step3-on.png" alt="icon-step3">
+                <span style="color:#2948FF">Finish</span>
+            </div>
+            <div class="modal">
+                <div>
+                    <span>TRANSFER TO GHALUH 1</span>
+                    <div>
+                        <span>Enter Your Pin &#128075;</span>
+                        <span>Enter Your Pin For Transaction</span>
+                        <div class="pincode">
+                            <input type="password" inputmode="numeric" maxlength="1" id="pin1">
+                            <input type="password" inputmode="numeric" maxlength="1" id="pin2">
+                            <input type="password" inputmode="numeric" maxlength="1" id="pin3">
+                            <input type="password" inputmode="numeric" maxlength="1" id="pin4">
+                            <input type="password" inputmode="numeric" maxlength="1" id="pin5">
+                            <input type="password" inputmode="numeric" maxlength="1" id="pin6">
+                        </div>
+                    </div>
+                    <div>
+                        <button class="submit" value="validatePin">Next</button>
+                        <span>Forgot Your Pin? <a href="./change-pin.html" style="text-decoration: none;">Reset</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="info">
+                <span>People Information</span>
+                <div>
+                    <div>
+                        <img src="../assets/result1.png" alt="result-photo">
+                        <div>
+                            <span style="font-weight: 600;">Ghaluh 1</span>
+                            <span>(239) 555-0108</span>
+                            <div>
+                                <img src="../assets/verified.png" alt="verified-icon" width="10px" height="10px">
+                                <span>Verified</span>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="../assets/star.png" alt="star-icon">
+                </div>
+                <div class="sub">
+                    <span>Amount</span>
+                    <span>Type the amount you want to transfer and then press continue to the next steps.</span>
+                </div>
+                <div>
+                    <img src="../assets/money-bill.png" alt="money-icon">
+                    <input type="text" placeholder="Enter Nominal Transfer">
+                </div>
+                <div class="sub">
+                    <span>Notes</span>
+                    <span>You can add some notes for this transfer such as payment coffee or something</span>
+                </div>
+                <div>
+                    <input type="text" placeholder="Enter Some Notes">
+                </div>
+                <button>Submit & Transfer</button>
+            </div>
         </div>
     </div>
 </body>

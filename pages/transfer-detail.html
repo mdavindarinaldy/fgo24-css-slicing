@@ -6,6 +6,10 @@
     <title>Transfer Page</title>
     <link rel="stylesheet" href="dashboard-style.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+        html, body {
+            font-family: "Montserrat", sans-serif;
+        }
         nav>button:nth-child(2) {
             background-color: #2948FF;
             border: 1px solid #2948FF;
@@ -141,12 +145,23 @@
             height: 25px;
             gap: 5px;
         }
-        div.info>div:last-child {
+        div.info>div:nth-child(6) {
             border: 1px solid #E8E8E8;
             box-sizing: border-box;
             padding: 3px 5px;
             flex-grow: 1;
-            height: 100px;
+            height: 75px;
+        }
+        div.info>button:last-child {
+            box-sizing: border-box;
+            width: 100%;
+            color:#FFFFFF;
+            background-color: #2948FF;
+            border: 1px solid #2948FF;
+            border-radius: 5px;
+            height: 20px;
+            font-size: 10px;
+            font-family: "Montserrat", sans-serif;
         }
         input {
             outline: none;
@@ -226,6 +241,7 @@
                 <div>
                     <input type="text" placeholder="Enter Some Notes">
                 </div>
+                <button>Submit & Transfer</button>
             </div>
         </div>
     </div>
