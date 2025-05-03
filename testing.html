@@ -1,32 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-      body {
-        display: block;
-      }
-        hr {
-  border: none;
-  border-top: 1px solid red;
-  color: red;
-  overflow: visible;
-  text-align: center;
-  height: 0px;
-}
+  <meta charset="UTF-8">
+  <title>Dropdown Navigation</title>
+  <style>
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
 
-hr::after {
-  background: #fff;
-  content: "or";
-  padding: 0 4px;
-  position: relative;
-  top: -13px;
-}
-    </style>
+    .dropdown-btn {
+      padding: 10px 20px;
+      background-color: #2948FF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
 </head>
 <body>
-<hr />
+
+<div class="dropdown">
+  <button class="dropdown-btn"><img src="./assets/down.png" alt=""></button>
+  <div class="dropdown-content">
+    <a href="page1.html">Page 1</a>
+    <a href="page2.html">Page 2</a>
+    <a href="page3.html">Page 3</a>
+  </div>
+</div>
+
 </body>
 </html>
