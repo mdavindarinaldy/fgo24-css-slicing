@@ -3,103 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Transfer Page</title>
+    <link rel="stylesheet" href="dashboard-style.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
-
-        html, body {
-            font-family: "Montserrat", sans-serif;
-            width: 100svw;
-            height: 100svh;
-            margin: 0;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            flex-direction: row;
-            align-items: center;
-            height: 10svh;
-            border: 1px solid #E8E8E8;
-            padding: 0 50px;
-        }
-        .logo,.profile {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: left;
-            gap: 20px;
-        }
-        .logo>img {
-            width: 22px;
-            height: 22px;
-        }
-        .logo>span{
-            font-family: "Nunito Sans", sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            color: #2948FF;
-        }
-        .profile>button {
-            border: none;
-            background-color: #FFFFFF;
-        }
-        div.main {
-            display: flex;
-            flex-direction: row;
-        }
-        nav {
-            display: flex;
-            flex-direction: column;
-            width: 20svw;
-            height: 84.5svh;
-            gap: 10px;
-            align-items: center;
-            padding-top: 5svh;
-            border-right: 1px solid #E8E8E8;
-        }
-        nav>button {
-            border: 0;
-            width: 15svw;
-            height: 5svh;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 15px;
-            font-size: 14px;
-            font-weight: 300;
-            color: #4F5665;
-            background-color: #FFFFFF;
-        }
-        div.content {
-            padding: 15px;
-        }
-        button>img {
-            width: 16px;
-            height: 16px;
-        }
-        nav>button:hover {
-            background-color: #2948FF;
-            border: 1px solid #2948FF;
-            border-radius: 5px;
-            color: #FFFFFF;
-        }
-        nav>button:hover img.db {
-            content: url('../assets/dashboard-white.png');
-        }
-        nav>button:hover img.tf {
-            content: url('../assets/send-white.png');
-            width: 13px;
-            height: 13px;
-        }
-        nav>button:hover img.ht {
-            content: url('../assets/history-white.png');
-        }
-        nav>button:hover img.tu {
-            content: url('../assets/upload-white.png');
-        }
-        nav>button:hover img.pf {
-            content: url('../assets/two-user-white.png');
-        }
+       
     </style>
 </head>
 <body>
@@ -108,23 +15,26 @@
             <img src="../assets/logo.png" alt="Logo">
             <span>E-Wallet</span>
         </div>
-        <div class="profile">
+        <div class="profile dropdown">
             <span>Ghaluh Wizard</span>
             <img src="../assets/ghaluh.png" alt="foto-profile">
-            <button><img src="../assets/down.png" alt="more-setting"></button>
+            <button class="dropdown-btn"><img src="../assets/down.png" alt="icon-dropdown"></button>
+            <div class="dropdown-content">
+                <a href="./edit-profile.html"><img src="../assets/two-user.png" alt="profile-icon" class="prof">Profile</a>
+                <a href="#" style="color:#D00000"><img src="../assets/logout.png" alt="icon-logout">Keluar</a>
+            </div>
         </div>
     </header>
     <div class="main">
         <nav>
-            <button><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
-            <button><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
-            <button><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
-            <button><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
-            <button><img src="../assets/two-user.png" alt="icon-two-user" class="pf">Profile</button>
+            <button><img src="../assets/dashboard-white.png" alt="icon-dashboard" class="db">Dashboard</button>
+            <button onclick="window.location.href='transfer.html'"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
+            <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
+            <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
+            <button onclick="window.location.href='edit-profile.html'"><img src="../assets/two-user.png" alt="icon-two-user" class="pf">Profile</button>
             <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
         </nav>
         <div class="content">
-            Menu
         </div>
     </div>
 </body>
