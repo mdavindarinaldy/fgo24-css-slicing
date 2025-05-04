@@ -8,7 +8,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
         html, body {
-            font-family: "Montserrat", sans-serif;
+            font-family: "Montserrat";
         }
         .dropdown:hover>div.dropdown-content {
             display: none;
@@ -158,7 +158,7 @@
         }
         div.info>button:last-child {
             box-sizing: border-box;
-            width: 100%;
+            width: 65svw;
             color:#FFFFFF;
             background-color: #2948FF;
             border: 1px solid #2948FF;
@@ -200,71 +200,52 @@
             box-sizing: border-box;
             padding: 15px;
         }
-        div.content>div.modal>div>div{
-            width: 100%;
-            height: 100%;
-        }
-        .pincode {
-            display: flex;
-            justify-content: space-between;
-            height: 80px;
-            margin-bottom: 30px;
-            width: 100%;
-            transition: all 0.1s;
-        }
-        .pincode>input {
-            font-size: 30px;
-            text-align: center;
-            width: 35px;
-            border-bottom: 2px solid #E8E8E8;
-        }
-        .pincode>input:focus {
-            outline: none;
-            border-bottom: 2px solid #2948FF;
-        }
         div.main>div.content>div.modal>div>span:first-child {
             border-bottom: 1px solid #E8E8E8;
             width: 100%;
             font-size: 12px;
             color:#4F5665;
             font-weight: 500;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
-        div.main>div.content>div.modal>div>div:nth-child(2) {
+        div.modal>div>div {
             display: flex;
             flex-direction: column;
-            gap:5px;
-        }
-        div.modal>div>div:nth-child(2)>span:first-child{
-            font-size: 18px;
-            font-weight: 600;
-        }
-        div.modal>div>div:nth-child(2)>span:nth-child(2){
-            font-size: 12px;
-            font-weight: 400;
-            color:#4F5665;
-        }
-        div.modal>div>div:last-child {
-            display: flex;
-            flex-direction: column;
+            justify-content: space-evenly;
             align-items: center;
-            justify-content: center;
-            gap: 7px;
             width: 100%;
+            gap: 10px;
         }
-        div.modal>div>div:last-child>button {
-            background-color: #2948FF;
-            box-sizing: border-box;
-            border: 1px solid #2948FF;
-            border-radius: 10px;
-            color: #FFFFFF;
-            font-size: 12px;
-            width: 100%;
-            height: 30px;
-            font-family: "Montserrat", sans-serif;
+        div.modal>div>div>img {
+            width: 15svw;
+            height: 30svh;
         }
-        div.modal>div>div:last-child>span {
+        div.modal>div>div>span:nth-child(2) {
+            font-weight: 500;
+            font-size: 16px;
+        }
+        div.modal>div>div>span:nth-child(2)>span {
+            color: #D00000;
+        }
+        div.modal>div>div>span:nth-child(3) {
+            font-weight: 300;
             font-size: 10px;
+        }
+        div.modal>div>div>a {
+            width: 100%;
+            border: 1px solid #2948FF;
+            background-color: #2948FF;
+            color: #FFFFFF;
+            border-radius: 5px;
+            font-size: 10px;
+            padding: 5px 0;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 550;
+        }
+        div.modal>div>div>a:last-child{
+            background-color: #FFFFFF;
+            color: #2948FF;
         }
     </style>
 </head>
@@ -312,20 +293,11 @@
                 <div>
                     <span>TRANSFER TO GHALUH 1</span>
                     <div>
-                        <span>Enter Your Pin &#128075;</span>
-                        <span>Enter Your Pin For Transaction</span>
-                        <div class="pincode">
-                            <input type="password" inputmode="numeric" maxlength="1" id="pin1">
-                            <input type="password" inputmode="numeric" maxlength="1" id="pin2">
-                            <input type="password" inputmode="numeric" maxlength="1" id="pin3">
-                            <input type="password" inputmode="numeric" maxlength="1" id="pin4">
-                            <input type="password" inputmode="numeric" maxlength="1" id="pin5">
-                            <input type="password" inputmode="numeric" maxlength="1" id="pin6">
-                        </div>
-                    </div>
-                    <div>
-                        <button class="submit" value="validatePin">Next</button>
-                        <span>Forgot Your Pin? <a href="./change-pin.html" style="text-decoration: none;">Reset</a></span>
+                        <img src="../assets/failed.png" alt="failed-transfer-image">
+                        <span>Oops Transfer <span>Failed</span></span>
+                        <span>Sorry there is an Issue for your transfer, try again later!</a></span>
+                        <a href="./transfer.html">Try Again</a>
+                        <a href="./dashboard.html">Back To Dashboard</a>
                     </div>
                 </div>
             </div>

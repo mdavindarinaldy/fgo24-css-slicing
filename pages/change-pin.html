@@ -3,10 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transfer Page</title>
+    <title>Edit Profile Page</title>
     <link rel="stylesheet" href="dashboard-style.css">
     <style>
-       
+       @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+        html, body {
+            font-family: "Montserrat", sans-serif;
+        }
+        nav>button:nth-child(5) {
+            background-color: #2948FF;
+            border: 1px solid #2948FF;
+            border-radius: 5px;
+            color: #FFFFFF;
+            font-size: 14px;
+        }
+        nav>button:nth-child(1) {
+            background-color: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-radius: 5px;
+            color: #4F5665;
+        }
+        nav>button:hover {
+            background-color: #2948FF;
+            border: 1px solid #2948FF;
+            border-radius: 5px;
+            color: #FFFFFF;
+        }
+        nav>button:hover img.db {
+            content: url('../assets/dashboard-white.png');
+        }
+        div.main>div.content {
+            display: flex;
+            box-sizing: border-box;
+            flex-direction: column;
+            padding: 5px 30px;
+            width: 80svw;
+            height: 90svh;
+            gap: 10px;
+        }
+        div.main>div.content>div:first-child {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            height: 5svh;
+        }
+        div.main>div.content>div:last-child {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            border: 1px solid #E8E8E8;
+            gap: 10px;
+            padding: 10px;
+        }
+        .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .pincode {
+            display: flex;
+            justify-content: space-between;
+            height: 80px;
+            width: 40svw;
+            margin-bottom: 30px;
+            transition: all 0.1s;
+        }
+        input {
+            border: 0px;
+            font-size: 50px;
+            text-align: center;
+            width: 60px;
+            border-bottom: 2px solid #E8E8E8;
+        }
+        input:focus {
+            outline: none;
+            border-bottom: 2px solid #2948FF;
+        }
+        button.submit {
+            border: 1px solid #2948FF;
+            border-radius: 6px;
+            background-color: #2948FF;
+            color: #FFFFFF;
+            height: 35px;
+            width: 100%;
+            font-size: 12px;
+            font-family: "Montserrat", sans-serif;
+        }
+        .info>span:first-child {
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .info>span:nth-child(2) {
+            font-weight: 300;
+            font-size: 13px;
+        }
     </style>
 </head>
 <body>
@@ -27,14 +119,31 @@
     </header>
     <div class="main">
         <nav>
-            <button><img src="../assets/dashboard-white.png" alt="icon-dashboard" class="db">Dashboard</button>
+            <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
             <button onclick="window.location.href='transfer.html'"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
             <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
             <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
-            <button onclick="window.location.href='edit-profile.html'"><img src="../assets/two-user.png" alt="icon-two-user" class="pf">Profile</button>
+            <button><img src="../assets/two-user-white.png" alt="icon-two-user" class="pf">Profile</button>
             <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
         </nav>
         <div class="content">
+            <div>
+                <img src="../assets/two-user-blue.png" alt="profile-icon" width="15px" height="15px">
+                <span style="font-weight: 600;">Profile</span>
+            </div>
+            <div class="info">
+                <span>Change Pin &#128075;</span>
+                <span>Please save your pin because this is so important</span>
+                <div class="pincode">
+                    <input type="password" inputmode="numeric" maxlength="1" id="pin1">
+                    <input type="password" inputmode="numeric" maxlength="1" id="pin2">
+                    <input type="password" inputmode="numeric" maxlength="1" id="pin3">
+                    <input type="password" inputmode="numeric" maxlength="1" id="pin4">
+                    <input type="password" inputmode="numeric" maxlength="1" id="pin5">
+                    <input type="password" inputmode="numeric" maxlength="1" id="pin6">
+                </div>
+                <button class="submit" value="validatePin" name="validatePin">Submit</button>
+            </div>
         </div>
     </div>
 </body>

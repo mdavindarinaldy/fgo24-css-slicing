@@ -3,10 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transfer Page</title>
+    <title>Top Up Page</title>
     <link rel="stylesheet" href="dashboard-style.css">
     <style>
-       
+       @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+        html, body {
+            font-family: "Montserrat", sans-serif;
+        }
+        nav>button:nth-child(4) {
+            background-color: #2948FF;
+            border: 1px solid #2948FF;
+            border-radius: 5px;
+            color: #FFFFFF;
+            font-size: 14px;
+        }
+        nav>button:nth-child(1) {
+            background-color: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-radius: 5px;
+            color: #4F5665;
+        }
+        nav>button:hover {
+            background-color: #2948FF;
+            border: 1px solid #2948FF;
+            border-radius: 5px;
+            color: #FFFFFF;
+        }
+        nav>button:hover img.db {
+            content: url('../assets/dashboard-white.png');
+        }
+        div.main>div.content {
+            display: flex;
+            box-sizing: border-box;
+            flex-direction: column;
+            padding: 30px;
+            width: 80svw;
+            height: 90svh;
+            gap: 20px;
+        }
+        div.main>div.content>div:first-child {
+            display: flex;
+            flex-direction: row;
+            gap: 1svh;
+            height: 9svh;
+        }
+        div.main>div.content>div:last-child {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            padding: 10px;
+        }
+        div.main>div.content>div>div:first-child {
+            display: flex;
+            flex-direction: column;
+            width: 50svw;
+            height: 75svh;
+            border: 1px solid #E8E8E8;
+            border-radius: 5px;
+            padding: 10px;
+            gap: 5px;
+            box-sizing: border-box;
+        }
+        div.main>div.content>div>div>div.info {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            gap: 15px;
+            background-color: #E8E8E84D;
+            height: 70px;
+            padding: 10px;
+            width: 45svw;
+        }
+        div.content>div>div>span:nth-child(1) {
+            font-weight: 500;
+            font-size: 14px;
+        }
+        div.info>div {
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-content: flex-start;
+            gap: 3px;
+        }
+        div.info>div>div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            background-color: #2948FF;
+            padding: 2px;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        div.content>div>div>div.sub {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            justify-items: center;
+            align-items: flex-start;
+        }
+        div.sub>span:first-child {
+            font-size: 12px;
+            font-weight: 500;
+        }
+        div.sub>span:nth-child(2) {
+            font-size: 10px;
+            font-weight: 300;
+        }
+        div.sub>div.amount {
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            justify-items: flex-start;
+            align-items: center;
+            border: 1px solid #E8E8E8;
+            border-radius: 5px;
+            padding: 10px;
+            width: 45svw;
+        }
+        input {
+            outline: none;
+            border: none;
+            font-size: 8px;
+            font-weight: 300;
+        }
+        div.sub>div.payment {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            width: 45svw;
+            height: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            justify-items: center;
+            align-items: center;
+            background-color: #E8E8E84D;
+        }
+        div.sub>div.payment>span {
+            justify-self: flex-start;
+            font-size: 10px;
+            font-weight: 300;
+        }
+        div.main>div.content>div>div:last-child {
+            width: 25svw;
+            height: max-content;
+            border: 1px solid #E8E8E8;
+            box-sizing: border-box;
+            border-radius: 5px;
+            gap: 10px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        div.content>div:last-child>div:last-child {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        div.content>div>div>div.sub-total {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            font-size: 12px;
+            gap: 10px;
+        }
+        div.sub-total>div>span:last-child {
+            font-weight: 500;
+        }
+        div.sub-total>div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 22svw;
+        }
+        hr#break {
+            color: #4F5665;
+            background-color: rgba(0,0,0,0.5);
+            height: 1px;
+            width: 22svw;
+        }
+        button#submit-payment {
+            background-color: #2948FF;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            width: 22svw;
+            color: #FFFFFF;
+            font-size: 10px;
+            font-weight: 100;
+        }
+        span#span-discount {
+            font-weight: 200;
+            font-size: 10px;
+        }
     </style>
 </head>
 <body>
@@ -27,14 +220,95 @@
     </header>
     <div class="main">
         <nav>
-            <button><img src="../assets/dashboard-white.png" alt="icon-dashboard" class="db">Dashboard</button>
+            <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
             <button onclick="window.location.href='transfer.html'"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
             <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
-            <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
+            <button><img src="../assets/upload-white.png" alt="icon-upload" class="tu">Top Up</button>
             <button onclick="window.location.href='edit-profile.html'"><img src="../assets/two-user.png" alt="icon-two-user" class="pf">Profile</button>
             <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
         </nav>
         <div class="content">
+            <div>
+                <img src="../assets/upload-blue.png" alt="top-up-icon">
+                <span style="font-weight: 600;">Top Up Account</span>
+            </div>
+            <div>
+                <div>
+                    <span>Account Information</span>
+                    <div class="info">
+                        <img src="../assets/ghaluh-box.png" alt="profile-photo" width="50px" height="50px">
+                        <div>
+                            <span style="font-weight: 500; font-size: 12px;">Ghaluh Wizard</span>
+                            <span style="font-weight: 300; font-size: 10px;">(239) 555-0108</span>
+                            <div>
+                                <img src="../assets/verified.png" alt="verified-icon" width="12px" height="12px">
+                                <span style="color:#FFFFFF; font-size: 10px;">Verified</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sub">
+                        <span>Amount</span>
+                        <span>Type the amount you want to transfer to your e-wallet account</span>
+                        <div class="amount">
+                            <img src="../assets/money-bill.png" alt="icon-dompet">
+                            <input type="text" placeholder="Enter Nominal Transfer">
+                        </div>
+                    </div>
+                    <div class="sub">
+                        <span>Payment Method</span>
+                        <span>Choose your payment method for top up account</span>
+                        <div class="payment">
+                            <input type="radio" name="payment" id="BRI" value="BRI">
+                            <img src="../assets/bri.png" alt="Logo-BRI" width="15px" height="15px">
+                            <span>Bank Rakyat Indonesia</span>
+                        </div>
+                        <div class="payment">
+                            <input type="radio" name="payment" id="Dana" value="Dana">
+                            <img src="../assets/Dana.png" alt="Logo-Dana" width="15px" height="10px">
+                            <span>Dana</span>
+                        </div>
+                        <div class="payment">
+                            <input type="radio" name="payment" id="BCA" value="BCA">
+                            <img src="../assets/bca.png" alt="Logo-BCA" width="15px" height="10px">
+                            <span>Bank Central Asia</span>
+                        </div>
+                        <div class="payment">
+                            <input type="radio" name="payment" id="gopay" value="gopay">
+                            <img src="../assets/gopay.png" alt="Logo-gopay" width="15px" height="10px">
+                            <span>Gopay</span>
+                        </div>
+                        <div class="payment">
+                            <input type="radio" name="payment" id="OVO" value="OVO">
+                            <img src="../assets/ovo.png" alt="Logo-OVO" width="15px" height="10px">
+                            <span>OVO</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span style="font-size: 14px;font-weight: 500;">Payment</span>
+                    <div class="sub-total">
+                        <div>
+                            <span>Order</span>
+                            <span>IDR. 40.000</span>
+                        </div>
+                        <div>
+                            <span>Delivery</span>
+                            <span>IDR. 0</span>
+                        </div>
+                        <div>
+                            <span>Tax</span>
+                            <span>IDR. 4.000</span>
+                        </div>
+                        <hr id="break"/>
+                        <div>
+                            <span>Sub Total</span>
+                            <span>IDR. 44.000</span>
+                        </div>
+                        <button id="submit-payment">Submit</button>
+                        <span id="span-discount">*Get Discount if you pay with Bank Central Asia</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

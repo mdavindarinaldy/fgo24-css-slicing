@@ -3,10 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transfer Page</title>
+    <title>Edit Profile Page</title>
     <link rel="stylesheet" href="dashboard-style.css">
     <style>
-       
+       @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+        html, body {
+            font-family: "Montserrat", sans-serif;
+        }
+        nav>button:nth-child(5) {
+            background-color: #2948FF;
+            border: 1px solid #2948FF;
+            border-radius: 5px;
+            color: #FFFFFF;
+            font-size: 14px;
+        }
+        nav>button:nth-child(1) {
+            background-color: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-radius: 5px;
+            color: #4F5665;
+        }
+        nav>button:hover {
+            background-color: #2948FF;
+            border: 1px solid #2948FF;
+            border-radius: 5px;
+            color: #FFFFFF;
+        }
+        nav>button:hover img.db {
+            content: url('../assets/dashboard-white.png');
+        }
+        div.main>div.content {
+            display: flex;
+            box-sizing: border-box;
+            flex-direction: column;
+            padding: 5px 30px;
+            width: 80svw;
+            height: 90svh;
+            gap: 10px;
+        }
+        div.main>div.content>div:first-child {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            height: 5svh;
+        }
+        div.main>div.content>div:last-child {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            border: 1px solid #E8E8E8;
+            gap: 10px;
+            padding: 10px;
+        }
+        div.content>div.info>div:first-child>div:nth-child(2) {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+        }
+        div.content>div.info>div {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        div.content>div.info>div:first-child>div:nth-child(2)>div.button {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        div.button>button {
+            background-color: #2948FF;
+            border: none;
+            border-radius: 5px;
+            padding: 3px 7px;
+            font-size: 10px;
+            color: white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-family: "Montserrat", sans-serif;
+            gap: 10px;
+            height: 25px;
+        }
+        img#edit, img#del {
+            width: 13px;
+            height: 13px;
+        }
+        div.button>button:last-child {
+            background-color: #FFFFFF;
+            border: 1px solid #D00000;
+            color: #D00000;
+        }
+        div.input {
+            border: 1px solid #E8E8E8;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            padding: 8px;
+            align-items: center;
+        }
+        input {
+            outline: none;
+            border: none;
+            width: 90%;
+            font-size: 10px;
+            font-family: "Montserrat", sans-serif;
+        }
+        a {
+            text-decoration: none;
+            font-size: 10px;
+        }
+        div.info>button:last-child {
+            border-radius: 10px;
+            border: none;
+            padding: 5px;
+            width: 100%;
+            background-color: #2948FF;
+            color: #FFFFFF;
+            font-family: "Montserrat", sans-serif;
+        }
     </style>
 </head>
 <body>
@@ -27,14 +143,67 @@
     </header>
     <div class="main">
         <nav>
-            <button><img src="../assets/dashboard-white.png" alt="icon-dashboard" class="db">Dashboard</button>
+            <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
             <button onclick="window.location.href='transfer.html'"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
             <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
             <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
-            <button onclick="window.location.href='edit-profile.html'"><img src="../assets/two-user.png" alt="icon-two-user" class="pf">Profile</button>
+            <button><img src="../assets/two-user-white.png" alt="icon-two-user" class="pf">Profile</button>
             <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
         </nav>
         <div class="content">
+            <div>
+                <img src="../assets/two-user-blue.png" alt="profile-icon" width="15px" height="15px">
+                <span style="font-weight: 600;">Profile</span>
+            </div>
+            <div class="info">
+                <div>
+                    <span style="font-weight: 500;">Profile Picture</span>
+                    <div>
+                        <div style="width: max-content;background-color: #E8E8E84D;"><img src="../assets/user-medium.png" alt="user-default-image" width="60px" height="60px"></div>
+                        <div class="button">
+                            <button>
+                                <img src="../assets/edit-white.png" alt="edit-icon" id="edit">
+                                Change Profile Picture
+                            </button>
+                            <button>
+                                <img src="../assets/delete.png" alt="delete-icon" id="del">
+                                Delete Profile Picture
+                            </button>
+                        </div>
+                    </div>
+                    <span style="font-size: 10px; font-weight: 200;">The profile picture must be 512 x 512 pixels or less</span>
+                </div>
+                <div>
+                    <span style="font-weight: 400; font-size: 12px;">Full Name</span>
+                    <div class="input">
+                        <img src="../assets/user-small.png" alt="icon-user">
+                        <input type="text" placeholder="Enter Full Name" name="fullName">
+                    </div>
+                </div>
+                <div>
+                    <span style="font-weight: 400; font-size: 12px;">Phone</span>
+                    <div class="input">
+                        <img src="../assets/phone.png" alt="icon-phone">
+                        <input type="tel" placeholder="Enter Your Phone Number" name="phoneNumber">
+                    </div>
+                </div>
+                <div>
+                    <span style="font-weight: 400; font-size: 12px;">Email</span>
+                    <div class="input">
+                        <img src="../assets/mail-black.png" alt="icon-mail">
+                        <input type="text" placeholder="Enter Your Email" name="email">
+                    </div>
+                </div>
+                <div>
+                    <span style="font-weight: 400; font-size: 12px;">Password</span>
+                    <a href="change-pass.html">Change Password</a>
+                </div>
+                <div>
+                    <span style="font-weight: 400; font-size: 12px;">Pin</span>
+                    <a href="change-pin.html">Change Pin</a>
+                </div>
+                <button>Submit</button>
+            </div>
         </div>
     </div>
 </body>

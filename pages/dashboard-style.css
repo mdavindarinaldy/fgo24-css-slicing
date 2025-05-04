@@ -6,6 +6,7 @@ html, body {
     height: 100svh;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 header {
     box-sizing: border-box;
@@ -92,7 +93,7 @@ nav {
     display: flex;
     flex-direction: column;
     width: 20svw;
-    height: 84.5svh;
+    height: 90svh;
     gap: 10px;
     align-items: center;
     padding-top: 5svh;

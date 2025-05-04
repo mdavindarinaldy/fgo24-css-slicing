@@ -3,10 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transfer Page</title>
+    <title>History Transaction Page</title>
     <link rel="stylesheet" href="dashboard-style.css">
     <style>
-       
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+        html, body {
+            font-family: "Montserrat", sans-serif;
+        }
+        nav>button:nth-child(3) {
+            background-color: #2948FF;
+            border: 1px solid #2948FF;
+            border-radius: 5px;
+            color: #FFFFFF;
+            font-size: 14px;
+        }
+        nav>button:nth-child(1) {
+            background-color: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-radius: 5px;
+            color: #4F5665;
+        }
+        nav>button:hover {
+            background-color: #2948FF;
+            border: 1px solid #2948FF;
+            border-radius: 5px;
+            color: #FFFFFF;
+        }
+        nav>button:hover img.db {
+            content: url('../assets/dashboard-white.png');
+        }
+        div.main>div.content {
+            display: flex;
+            box-sizing: border-box;
+            flex-direction: column;
+            padding: 30px;
+            width: 80svw;
+            height: 90svh;
+            gap: 20px;
+        }
+        div.main>div.content>div:first-child {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1svh;
+            height: 5svh;
+        }
+        div.main>div.content>div:last-child {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #E8E8E8;
+        }
+        div.content>div.info>div:first-child {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+        }
+        div.content>div.info>div:first-child>div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            box-sizing: border-box;
+            height: 20px;
+            border: 1px solid #E8E8E8;
+            border-radius: 5px;
+        }
+        button {
+            border: none;
+            background-color: #FFFFFF;
+        }
+        button>img {
+            width: 10px;
+            height: 10px;
+        }
+        input {
+            outline: none;
+            border: none;
+            font-size: 10px;
+            font-weight: 400;
+            width: 250px;
+        }
+        div.result {
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0 5px;
+            gap: 5px;
+            font-size: 12px;
+            color: #4F5665;
+            overflow-y: scroll;
+        }
+        div.result>div {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+        div.result>div>img:first-child {
+            width: 40px;
+            height: 40px;
+        }
+        div.result>div>img:last-child {
+            width: 15px;
+            height: 15px;
+        }
+        div.result>div>span:nth-child(2) {
+            width: 40%;
+            text-align: center;
+        }
+        div.result>div:nth-child(odd) {
+            background-color: #F9FAFB;
+        }
+        span.green {
+            color: #1EC15F;
+        }
+        span.red {
+            color: #D00000;
+        }
+        div.pages {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 300;
+        }
+        div.pages>div:last-child {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        div.pages>div:last-child>button {
+            font-size: 12px;
+            font-weight: 100;
+            color:#4F5665;
+        }
+        div.pages>div:last-child>button:nth-child(2) {
+            color: #2948FF;
+        }
     </style>
 </head>
 <body>
@@ -27,14 +168,98 @@
     </header>
     <div class="main">
         <nav>
-            <button><img src="../assets/dashboard-white.png" alt="icon-dashboard" class="db">Dashboard</button>
+            <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
             <button onclick="window.location.href='transfer.html'"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
-            <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
+            <button><img src="../assets/history-white.png" alt="icon-history" class="ht">History</button>
             <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
             <button onclick="window.location.href='edit-profile.html'"><img src="../assets/two-user.png" alt="icon-two-user" class="pf">Profile</button>
             <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
         </nav>
         <div class="content">
+            <div>
+                <img src="../assets/history-blue.png" alt="history-icon">
+                <span style="font-weight: 600;">History Transaction</span>
+            </div>
+            <div class="info">
+                <div>
+                    <span style="font-size: 14px; font-weight: 500;">Find Transaction</span>
+                    <div>
+                        <input type="text" placeholder="Enter Number or Full Name">
+                        <button class="search"><img src="../assets/Search.png" alt="search-icon"></button>
+                    </div>
+                </div>
+                <div class="result">
+                    <div>
+                        <img src="../assets/people1.png" alt="result-search-image">
+                        <span>Ghaluh 1</span>
+                        <span>082116304337</span>
+                        <span class="green">Rp50.000</span>
+                        <img src="../assets/delete.png" alt="star-icon">
+                    </div>
+                    <div>
+                        <img src="../assets/people2.png" alt="result-search-image">
+                        <span>Cameron Williamson</span>
+                        <span>(308) 555-0121</span>
+                        <span class="red">Rp50.000</span>
+                        <img src="../assets/delete.png" alt="delete-icon">
+                    </div>
+                    <div>
+                        <img src="../assets/people3.png" alt="result-search-image">
+                        <span>Cody Fisher</span>
+                        <span>(704) 555-0127</span>
+                        <span class="green">Rp50.000</span>
+                        <img src="../assets/delete.png" alt="delete-icon">
+                    </div>
+                    <div>
+                        <img src="../assets/people4.png" alt="result-search-image">
+                        <span>Kristin Watson</span>
+                        <span>(603) 555-0123</span>
+                        <span class="red">Rp50.000</span>
+                        <img src="../assets/delete.png" alt="delete-icon">
+                    </div>
+                    <div>
+                        <img src="../assets/people5.png" alt="result-search-image">
+                        <span>Floyd Miles</span>
+                        <span>(671) 555-0110</span>
+                        <span class="green">Rp50.000</span>
+                        <img src="../assets/delete.png" alt="delete-icon">
+                    </div>
+                    <div>
+                        <img src="../assets/people6.png" alt="result-search-image">
+                        <span>Wade Warren</span>
+                        <span>(225) 555-0118</span>
+                        <span class="red">Rp50.000</span>
+                        <img src="../assets/delete.png" alt="delete-icon">
+                    </div>
+                    <div>
+                        <img src="../assets/people7.png" alt="result-search-image">
+                        <span>Savannah Nguyen</span>
+                        <span>(217) 555-0113</span>
+                        <span class="green">Rp50.000</span>
+                        <img src="../assets/delete.png" alt="delete-icon">
+                    </div>
+                    <div>
+                    </div>
+                </div>
+                <div class="pages">
+                    <div>
+                        <span>Show 7 Entry From 100 Entries</span>
+                    </div>
+                    <div>
+                        <button>Prev</button>
+                        <button>1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>4</button>
+                        <button>5</button>
+                        <button>6</button>
+                        <button>7</button>
+                        <button>8</button>
+                        <button>9</button>
+                        <button>Next</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
