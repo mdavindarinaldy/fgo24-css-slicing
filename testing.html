@@ -2,59 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Dropdown Navigation</title>
+  <title></title>
   <style>
-    .dropdown {
+    body>div:nth-child(2) {
+      width: 100svw;
+      height: 100svh;
+      background-color: aqua;
+    }
+    body>div:last-child {
+      width: 100svw;
+      height: 50svh;
+      background-color: yellow;
+    }
+    body>div>div {
       position: relative;
-      display: inline-block;
     }
-
-    .dropdown-btn {
-      padding: 10px 20px;
-      background-color: #2948FF;
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-
-    .dropdown-content {
-      display: none;
+    .a {
       position: absolute;
-      background-color: white;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
       z-index: 1;
-      border-radius: 4px;
-      overflow: hidden;
+      top:30px;
+      left:40px;
     }
-
-    .dropdown-content a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #f1f1f1;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
+    .b {
+      position: absolute;
+      z-index: 2;
+      top: 45px;
+      left: 50px;
     }
   </style>
 </head>
 <body>
-
-<div class="dropdown">
-  <button class="dropdown-btn"><img src="./assets/down.png" alt=""></button>
-  <div class="dropdown-content">
-    <a href="page1.html">Page 1</a>
-    <a href="page2.html">Page 2</a>
-    <a href="page3.html">Page 3</a>
+  <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione dolores recusandae exercitationem necessitatibus ab error nostrum inventore vitae perferendis. Explicabo rem dignissimos libero non inventore officia. Laudantium odio saepe optio!</div>
+  <div>
+    <div>
+      <img src="./assets/picture1.png" alt="gambar-dashboard" class="a">
+      <img src="./assets/picture2.png" alt="gambar-dashboard" class="b">
+    </div>
   </div>
-</div>
-
+  <div>
+  </div>
 </body>
 </html>

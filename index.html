@@ -3,19 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page V1</title>
+    <title>Landing Page V2</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+        html, body {
+            font-family: "Montserrat", sans-serif;
+            width: 100svw;
+            height: max-content;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        header {
+            box-sizing: border-box;
+            box-shadow: 2px 2px 10px rgba(41, 72, 200, 0.5);
+            padding: 0 30px;
+            z-index: 10;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100svw;
+            height: 10svh;
+            background-color: #2948FF;
+        }
+        .logo,.profile {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: left;
+            gap: 20px;
+            position: relative;
+        }
+        .logo>img {
+            width: 22px;
+            height: 22px;
+        }
+        .logo>span{
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #FFFFFF;
+        }
+        div.sign-in-up {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap:10px;
+        }
+        div.sign-in-up>a {
+            border: 1px solid #FFFFFF;
+            color: #FFFFFF;
+            background-color: #2948FF;
+            border-radius: 5px;
+            width: 70px;
+            height: 30px;
+            box-sizing: border-box;
+            padding: 7px 10px;
+            text-align: center;
+            font-size: 10px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        div.sign-in-up>a:last-child {
+            border: 1px solid #FFFFFF;
+            background-color: #FFFFFF;
+            color: #2948FF;
+        }
+        div.main {
+            width: 100svw;
+            height: 100svh;
+            background-color: #2948FF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        div.main>div:first-child {
+            position: relative;
+            top: 10svh;
+            color: #FFFFFF;
+            font-weight: 500;
+            font-size: 30px;
+            text-align: center;
+            width: 40svw;
+            height: 30svh;
+            margin: 40px 0;
+        }
+        div.main>div:last-child {
+            width: 100svw;
+            height: 80svh;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        div.main>div>div:first-child {
+            width: 50%;
+            height: 100%;
+            background-color: #2948FF;
+            position: relative;
+        }
+        div.main>div>div:last-child {
+            width: 35%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            justify-content: center;
+        }
+        div.main>div>div>img.bottom {
+            position: absolute;
+            z-index: 1;
+            bottom: -17px;
+            left: 10svw;
+            width: 260px;
+            height: 380px;
+        }
+        div.main>div>div>img.upper {
+            position: absolute;
+            z-index: 2;
+            bottom: -17px;
+            left: 20svw;
+            width: 220px;
+            height: 310px;
+        }
+        div.main>div>div:nth-child(2)>div:nth-child(2) {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+        div.main>div>div:nth-child(2)>div:nth-child(2)>a {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 50%;
+            height: 50px;
+            border: 1px solid #FFFFFF;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #2948FF;
+        }
+        div.main>div>div:nth-child(2)>div:nth-child(2)>a:last-child {
+            background-color: #2948FF;
+            color: #FFFFFF;
+        }
+        div.main>div>div:nth-child(2)>span {
+            color: #FFFFFF;
+            font-weight: 350;
+            font-size: 15px;
+        }
+        div.main>div>div:nth-child(2)>div:nth-child(3) {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+        div.main>div>div:nth-child(2)>div:nth-child(3)>span {
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 42px;
+        }
+        div.main>div>div:nth-child(2)>div:nth-child(3)>div {
+            position: relative;
+        }
+        div.main>div>div:nth-child(2)>div:nth-child(3)>div>img {
+            width: 45px;
+            height: 45px;
+        }
+        img#user1 {
+            position: absolute;
+            z-index: 1;
+            bottom: -20px;
+            left: 5px;
+        }
+        img#user2 {
+            position: absolute;
+            z-index: 2;
+            bottom: -20px;
+            left: 30px;
+        }
+        img#user3 {
+            position: absolute;
+            z-index: 3;
+            bottom: -20px;
+            left: 55px;
+        }
+        img#user4 {
+            position: absolute;
+            z-index: 4;
+            bottom: -20px;
+            left: 80px;
+        }
+        div.benefit {
+            width: 100svw;
+            height: 25svh;
+            background-color: rebeccapurple;
+        }
+        div.packages {
+            width: 100svw;
+            height: 75svh;
+            background-color: yellow;
+        }
+        div.features {
+            width: 100svw;
+            height: 65svh;
+            background-color: green;
+        }
+        div.sponsors {
+            width: 100svw;
+            height: 35svh;
+            background-color: saddlebrown;
+        }
+        div.testimony {
+            width: 100svw;
+            height: 60svh;
+            background-color: bisque;
+        }
+        div.download {
+            width: 100svw;
+            height: 60svh;
+            background-color: blueviolet;
+        }
+        footer {
+            width: 100svw;
+            height: 30svh;
+            background-color: #2948FF;
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <div>
+    <header>
+        <div class="logo">
             <img src="./assets/logo.png" alt="Logo">
-            ZWallet
+            <span>E-Wallet</span>
+        </div>
+        <div class="sign-in-up">
+            <a href="./pages/login.html">Sign In</a>
+            <a href="./pages/register.html">Sign Up</a>
+        </div>
+    </header>
+    <div class="main">
+        <div>
+            Experience the Future of Digital Payment with e-wallet
         </div>
         <div>
-            
+            <div>
+                <img src="./assets/picture1.png" alt="gambar-dashboard" class="bottom">
+                <img src="./assets/picture2.png" alt="gambar-dashboard" class="upper">
+            </div>
+            <div>
+                <span>Simplify Your Life with Secure and Convenient Mobile Payments</span>
+                <div>
+                    <a><img src="./assets/gplay.png" alt="icon-playstore">Play Store</a>
+                    <a><img src="./assets/apple.png" alt="icon-appsstore">Apps Store</a>
+                </div>
+                <div>
+                    <span>4.6 M</span>
+                    <div>
+                        <img src="./assets/photo-ellips1.png" alt="user" id="user1">
+                        <img src="./assets/photo-ellips2.png" alt="user" id="user2">
+                        <img src="./assets/photo-ellips3.png" alt="user" id="user3">
+                        <img src="./assets/photo-ellips4.png" alt="user" id="user4">
+                    </div>
+                </div>
+                <span>Around the world, we already have over 4.6 happy user</span>
+            </div>
         </div>
     </div>
-    <div>Content</div>
-    <div>Sponsor</div>
+    <div class="benefit">
+    </div>
+    <div class="packages">
+    </div>
+    <div class="features">
+    </div>
+    <div class="sponsors">
+    </div>
 </body>
 </html>
