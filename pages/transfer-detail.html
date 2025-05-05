@@ -186,64 +186,66 @@
             </div>
         </div>
     </header>
-    <div class="main">
-        <nav>
-            <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
-            <button><img src="../assets/send-white.png" alt="icon-transfer" class="tf">Transfer</button>
-            <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
-            <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
-            <button onclick="window.location.href='edit-profile.html'"><img src="../assets/two-user.png" alt="icon-two-user" class="pf">Profile</button>
-            <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
-        </nav>
-        <div class="content">
-            <div>
-                <img src="../assets/send-blue.png" alt="icon-transfer">
-                <span>Transfer Money</span>
-            </div>
-            <div>
-                <img src="../assets/step1-off.png" alt="icon-step1">
-                <span>Find People</span>
-                <img src="../assets/dashed.png" alt="icon-dashed">
-                <img src="../assets/step2-on.png" alt="icon-step2">
-                <span style="color:#2948FF">Set Nominal</span>
-                <img src="../assets/dashed.png" alt="icon-dashed">
-                <img src="../assets/step3-off.png" alt="icon-step3">
-                <span>Finish</span>
-            </div>
-            <div class="info">
-                <span>People Information</span>
+    <form>
+        <div class="main">
+            <nav>
+                <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
+                <button><img src="../assets/send-white.png" alt="icon-transfer" class="tf">Transfer</button>
+                <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
+                <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
+                <button onclick="window.location.href='edit-profile.html'"><img src="../assets/two-user.png" alt="icon-two-user" class="pf">Profile</button>
+                <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
+            </nav>
+            <div class="content">
                 <div>
+                    <img src="../assets/send-blue.png" alt="icon-transfer">
+                    <span>Transfer Money</span>
+                </div>
+                <div>
+                    <img src="../assets/step1-off.png" alt="icon-step1">
+                    <span>Find People</span>
+                    <img src="../assets/dashed.png" alt="icon-dashed">
+                    <img src="../assets/step2-on.png" alt="icon-step2">
+                    <span style="color:#2948FF">Set Nominal</span>
+                    <img src="../assets/dashed.png" alt="icon-dashed">
+                    <img src="../assets/step3-off.png" alt="icon-step3">
+                    <span>Finish</span>
+                </div>
+                <div class="info">
+                    <span>People Information</span>
                     <div>
-                        <img src="../assets/result1.png" alt="result-photo">
                         <div>
-                            <span style="font-weight: 600;">Ghaluh 1</span>
-                            <span>(239) 555-0108</span>
+                            <img src="../assets/result1.png" alt="result-photo">
                             <div>
-                                <img src="../assets/verified.png" alt="verified-icon" width="10px" height="10px">
-                                <span>Verified</span>
+                                <span style="font-weight: 600;">Ghaluh 1</span>
+                                <span>(239) 555-0108</span>
+                                <div>
+                                    <img src="../assets/verified.png" alt="verified-icon" width="10px" height="10px">
+                                    <span>Verified</span>
+                                </div>
                             </div>
                         </div>
+                        <img src="../assets/star.png" alt="star-icon">
                     </div>
-                    <img src="../assets/star.png" alt="star-icon">
+                    <div class="sub">
+                        <span>Amount</span>
+                        <span>Type the amount you want to transfer and then press continue to the next steps.</span>
+                    </div>
+                    <div>
+                        <img src="../assets/money-bill.png" alt="money-icon">
+                        <input type="text" placeholder="Enter Nominal Transfer">
+                    </div>
+                    <div class="sub">
+                        <span>Notes</span>
+                        <span>You can add some notes for this transfer such as payment coffee or something</span>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Enter Some Notes">
+                    </div>
+                    <button>Submit & Transfer</button>
                 </div>
-                <div class="sub">
-                    <span>Amount</span>
-                    <span>Type the amount you want to transfer and then press continue to the next steps.</span>
-                </div>
-                <div>
-                    <img src="../assets/money-bill.png" alt="money-icon">
-                    <input type="text" placeholder="Enter Nominal Transfer">
-                </div>
-                <div class="sub">
-                    <span>Notes</span>
-                    <span>You can add some notes for this transfer such as payment coffee or something</span>
-                </div>
-                <div>
-                    <input type="text" placeholder="Enter Some Notes">
-                </div>
-                <button>Submit & Transfer</button>
             </div>
         </div>
-    </div>
+    </form>
 </body>
 </html>

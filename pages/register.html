@@ -7,7 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
-        html, body {
+        html, body, form {
             background-color: #2948FF;
             font-family: "Montserrat", sans-serif;
             display: flex;
@@ -143,49 +143,51 @@
     </style>
 </head>
 <body>
-    <div class="left">
-        <div class="logo">
-            <img src="../assets/logo.png" alt="Logo">
-            <span>E-Wallet</span>
-        </div>
-        <span>Start Accessing Banking Needs With All Devices and All Platforms With 30.000+ Users</span>
-        <span>Transferring money is easier than ever, you can access Zwallet wherever you are. Desktop, laptop, mobile phone? we cover all of that for you!</span>
-        <button class="signIn">
-            <img src="../assets/Google.png" alt="Logo Google" width="15px" height="15px">Sign In With Google
-        </button>
-        <button class="signIn">
-            <img src="../assets/Facebook.png" alt="Logo Facebook" width="15px" height="15px">Sign In With Facebook
-        </button>        
-        <div><hr/><span>Or</span><hr/></div>
-        <div class="input">
-            <label for="email">Email</label>
-            <div>
-                <img src="../assets/mail.png" alt="email-logo" class="icon">
-                <input type="text" id="name" placeholder="Enter Your Mail">
-                <button><img src="../assets/EyeSlash.png" alt="buka-password" class="icon"></button>
+    <form>
+        <div class="left">
+            <div class="logo">
+                <img src="../assets/logo.png" alt="Logo">
+                <span>E-Wallet</span>
             </div>
-        </div>
-        <div class="input">
-            <label for="password">Password</label>
-            <div>
-                <img src="../assets/Password.png" alt="pass-icon" class="icon">
-                <input type="password" id="pass" placeholder="Enter Your Password">
-                <button><img src="../assets/EyeSlash.png" alt="buka-password" class="icon"></button>
+            <span>Start Accessing Banking Needs With All Devices and All Platforms With 30.000+ Users</span>
+            <span>Transferring money is easier than ever, you can access Zwallet wherever you are. Desktop, laptop, mobile phone? we cover all of that for you!</span>
+            <button class="signIn">
+                <img src="../assets/Google.png" alt="Logo Google" width="15px" height="15px">Sign In With Google
+            </button>
+            <button class="signIn">
+                <img src="../assets/Facebook.png" alt="Logo Facebook" width="15px" height="15px">Sign In With Facebook
+            </button>
+            <div><hr/><span>Or</span><hr/></div>
+            <div class="input">
+                <label for="email">Email</label>
+                <div>
+                    <img src="../assets/mail.png" alt="email-logo" class="icon">
+                    <input type="text" id="name" placeholder="Enter Your Mail">
+                    <button><img src="../assets/EyeSlash.png" alt="buka-password" class="icon"></button>
+                </div>
             </div>
-        </div>
-        <div class="input">
-            <label for="confirm">Confirm Password</label>
-            <div>
-                <img src="../assets/Password.png" alt="pass-icon" class="icon">
-                <input type="password" id="confirm" placeholder="Enter Your Password Again">
-                <button><img src="../assets/EyeSlash.png" alt="buka-password" class="icon"></button>
+            <div class="input">
+                <label for="password">Password</label>
+                <div>
+                    <img src="../assets/Password.png" alt="pass-icon" class="icon">
+                    <input type="password" id="pass" placeholder="Enter Your Password">
+                    <button><img src="../assets/EyeSlash.png" alt="buka-password" class="icon"></button>
+                </div>
             </div>
+            <div class="input">
+                <label for="confirm">Confirm Password</label>
+                <div>
+                    <img src="../assets/Password.png" alt="pass-icon" class="icon">
+                    <input type="password" id="confirm" placeholder="Enter Your Password Again">
+                    <button><img src="../assets/EyeSlash.png" alt="buka-password" class="icon"></button>
+                </div>
+            </div>
+            <button class="register">Register</button>
+            <span>Have An Account? <a href="./login.html" style="text-decoration: none;">Login</a></span>
         </div>
-        <button class="register">Register</button>
-        <span>Have An Account? <a href="./login.html" style="text-decoration: none;">Login</a></span>
-    </div>
-    <div class="right">
-        <img src="../assets/tangan-dompet.png" alt="Icon e-Wallet">
-    </div>
+        <div class="right">
+            <img src="../assets/tangan-dompet.png" alt="Icon e-Wallet">
+        </div>
+    </form>
 </body>
 </html>

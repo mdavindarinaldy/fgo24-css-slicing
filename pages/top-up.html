@@ -218,98 +218,100 @@
             </div>
         </div>
     </header>
-    <div class="main">
-        <nav>
-            <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
-            <button onclick="window.location.href='transfer.html'"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
-            <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
-            <button><img src="../assets/upload-white.png" alt="icon-upload" class="tu">Top Up</button>
-            <button onclick="window.location.href='edit-profile.html'"><img src="../assets/two-user.png" alt="icon-two-user" class="pf">Profile</button>
-            <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
-        </nav>
-        <div class="content">
-            <div>
-                <img src="../assets/upload-blue.png" alt="top-up-icon">
-                <span style="font-weight: 600;">Top Up Account</span>
-            </div>
-            <div>
+    <form>
+        <div class="main">
+            <nav>
+                <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
+                <button onclick="window.location.href='transfer.html'"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
+                <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
+                <button><img src="../assets/upload-white.png" alt="icon-upload" class="tu">Top Up</button>
+                <button onclick="window.location.href='edit-profile.html'"><img src="../assets/two-user.png" alt="icon-two-user" class="pf">Profile</button>
+                <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
+            </nav>
+            <div class="content">
                 <div>
-                    <span>Account Information</span>
-                    <div class="info">
-                        <img src="../assets/ghaluh-box.png" alt="profile-photo" width="50px" height="50px">
-                        <div>
-                            <span style="font-weight: 500; font-size: 12px;">Ghaluh Wizard</span>
-                            <span style="font-weight: 300; font-size: 10px;">(239) 555-0108</span>
+                    <img src="../assets/upload-blue.png" alt="top-up-icon">
+                    <span style="font-weight: 600;">Top Up Account</span>
+                </div>
+                <div>
+                    <div>
+                        <span>Account Information</span>
+                        <div class="info">
+                            <img src="../assets/ghaluh-box.png" alt="profile-photo" width="50px" height="50px">
                             <div>
-                                <img src="../assets/verified.png" alt="verified-icon" width="12px" height="12px">
-                                <span style="color:#FFFFFF; font-size: 10px;">Verified</span>
+                                <span style="font-weight: 500; font-size: 12px;">Ghaluh Wizard</span>
+                                <span style="font-weight: 300; font-size: 10px;">(239) 555-0108</span>
+                                <div>
+                                    <img src="../assets/verified.png" alt="verified-icon" width="12px" height="12px">
+                                    <span style="color:#FFFFFF; font-size: 10px;">Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <span>Amount</span>
+                            <span>Type the amount you want to transfer to your e-wallet account</span>
+                            <div class="amount">
+                                <img src="../assets/money-bill.png" alt="icon-dompet">
+                                <input type="text" placeholder="Enter Nominal Transfer">
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <span>Payment Method</span>
+                            <span>Choose your payment method for top up account</span>
+                            <div class="payment">
+                                <input type="radio" name="payment" id="BRI" value="BRI">
+                                <img src="../assets/bri.png" alt="Logo-BRI" width="15px" height="15px">
+                                <span>Bank Rakyat Indonesia</span>
+                            </div>
+                            <div class="payment">
+                                <input type="radio" name="payment" id="Dana" value="Dana">
+                                <img src="../assets/Dana.png" alt="Logo-Dana" width="15px" height="10px">
+                                <span>Dana</span>
+                            </div>
+                            <div class="payment">
+                                <input type="radio" name="payment" id="BCA" value="BCA">
+                                <img src="../assets/bca.png" alt="Logo-BCA" width="15px" height="10px">
+                                <span>Bank Central Asia</span>
+                            </div>
+                            <div class="payment">
+                                <input type="radio" name="payment" id="gopay" value="gopay">
+                                <img src="../assets/gopay.png" alt="Logo-gopay" width="15px" height="10px">
+                                <span>Gopay</span>
+                            </div>
+                            <div class="payment">
+                                <input type="radio" name="payment" id="OVO" value="OVO">
+                                <img src="../assets/ovo.png" alt="Logo-OVO" width="15px" height="10px">
+                                <span>OVO</span>
                             </div>
                         </div>
                     </div>
-                    <div class="sub">
-                        <span>Amount</span>
-                        <span>Type the amount you want to transfer to your e-wallet account</span>
-                        <div class="amount">
-                            <img src="../assets/money-bill.png" alt="icon-dompet">
-                            <input type="text" placeholder="Enter Nominal Transfer">
+                    <div>
+                        <span style="font-size: 14px;font-weight: 500;">Payment</span>
+                        <div class="sub-total">
+                            <div>
+                                <span>Order</span>
+                                <span>IDR. 40.000</span>
+                            </div>
+                            <div>
+                                <span>Delivery</span>
+                                <span>IDR. 0</span>
+                            </div>
+                            <div>
+                                <span>Tax</span>
+                                <span>IDR. 4.000</span>
+                            </div>
+                            <hr id="break"/>
+                            <div>
+                                <span>Sub Total</span>
+                                <span>IDR. 44.000</span>
+                            </div>
+                            <button id="submit-payment">Submit</button>
+                            <span id="span-discount">*Get Discount if you pay with Bank Central Asia</span>
                         </div>
-                    </div>
-                    <div class="sub">
-                        <span>Payment Method</span>
-                        <span>Choose your payment method for top up account</span>
-                        <div class="payment">
-                            <input type="radio" name="payment" id="BRI" value="BRI">
-                            <img src="../assets/bri.png" alt="Logo-BRI" width="15px" height="15px">
-                            <span>Bank Rakyat Indonesia</span>
-                        </div>
-                        <div class="payment">
-                            <input type="radio" name="payment" id="Dana" value="Dana">
-                            <img src="../assets/Dana.png" alt="Logo-Dana" width="15px" height="10px">
-                            <span>Dana</span>
-                        </div>
-                        <div class="payment">
-                            <input type="radio" name="payment" id="BCA" value="BCA">
-                            <img src="../assets/bca.png" alt="Logo-BCA" width="15px" height="10px">
-                            <span>Bank Central Asia</span>
-                        </div>
-                        <div class="payment">
-                            <input type="radio" name="payment" id="gopay" value="gopay">
-                            <img src="../assets/gopay.png" alt="Logo-gopay" width="15px" height="10px">
-                            <span>Gopay</span>
-                        </div>
-                        <div class="payment">
-                            <input type="radio" name="payment" id="OVO" value="OVO">
-                            <img src="../assets/ovo.png" alt="Logo-OVO" width="15px" height="10px">
-                            <span>OVO</span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <span style="font-size: 14px;font-weight: 500;">Payment</span>
-                    <div class="sub-total">
-                        <div>
-                            <span>Order</span>
-                            <span>IDR. 40.000</span>
-                        </div>
-                        <div>
-                            <span>Delivery</span>
-                            <span>IDR. 0</span>
-                        </div>
-                        <div>
-                            <span>Tax</span>
-                            <span>IDR. 4.000</span>
-                        </div>
-                        <hr id="break"/>
-                        <div>
-                            <span>Sub Total</span>
-                            <span>IDR. 44.000</span>
-                        </div>
-                        <button id="submit-payment">Submit</button>
-                        <span id="span-discount">*Get Discount if you pay with Bank Central Asia</span>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </body>
 </html>

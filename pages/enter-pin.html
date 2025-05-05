@@ -7,7 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
-        html, body {
+        html, body, form {
             background-color: #2948FF;
             font-family: "Montserrat", sans-serif;
             display: flex;
@@ -109,26 +109,28 @@
     </style>
 </head>
 <body>
-    <div class="left">
-        <div class="logo">
-            <img src="../assets/logo.png" alt="Logo">
-            <span>E-Wallet</span>
+    <form>
+        <div class="left">
+            <div class="logo">
+                <img src="../assets/logo.png" alt="Logo">
+                <span>E-Wallet</span>
+            </div>
+            <span>Enter Your Pin &#128075;</span>
+            <span>Please save your pin because this is so important</span>
+            <div class="pincode">
+                <input type="password" inputmode="numeric" maxlength="1" id="pin1">
+                <input type="password" inputmode="numeric" maxlength="1" id="pin2">
+                <input type="password" inputmode="numeric" maxlength="1" id="pin3">
+                <input type="password" inputmode="numeric" maxlength="1" id="pin4">
+                <input type="password" inputmode="numeric" maxlength="1" id="pin5">
+                <input type="password" inputmode="numeric" maxlength="1" id="pin6">
+            </div>
+            <button class="submit" value="validatePin">Submit</button>
+            <span>Forgot Your Pin? <a href="./change-pin.html" style="text-decoration: none;">Reset</a></span>
         </div>
-        <span>Enter Your Pin &#128075;</span>
-        <span>Please save your pin because this is so important</span>
-        <div class="pincode">
-            <input type="password" inputmode="numeric" maxlength="1" id="pin1">
-            <input type="password" inputmode="numeric" maxlength="1" id="pin2">
-            <input type="password" inputmode="numeric" maxlength="1" id="pin3">
-            <input type="password" inputmode="numeric" maxlength="1" id="pin4">
-            <input type="password" inputmode="numeric" maxlength="1" id="pin5">
-            <input type="password" inputmode="numeric" maxlength="1" id="pin6">
+        <div class="right">
+            <img src="../assets/orang.png" alt="Icon e-Wallet">
         </div>
-        <button class="submit" value="validatePin">Submit</button>
-        <span>Forgot Your Pin? <a href="./change-pin.html" style="text-decoration: none;">Reset</a></span>
-    </div>
-    <div class="right">
-        <img src="../assets/orang.png" alt="Icon e-Wallet">
-    </div>
+    </form>
 </body>
 </html>
