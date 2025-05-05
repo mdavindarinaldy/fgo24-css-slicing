@@ -125,61 +125,63 @@
             </div>
         </div>
     </header>
-    <div class="main">
-        <nav>
-            <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
-            <button onclick="window.location.href='transfer.html'"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
-            <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
-            <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
-            <button><img src="../assets/two-user-white.png" alt="icon-two-user" class="pf">Profile</button>
-            <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
-        </nav>
-        <div class="content">
-            <div>
-                <img src="../assets/two-user-blue.png" alt="profile-icon" width="15px" height="15px">
-                <span style="font-weight: 600;">Profile</span>
-            </div>
-            <div class="info">
-                <span>Change Password</span>
+    <form>
+        <div class="main">
+            <nav>
+                <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
+                <button onclick="window.location.href='transfer.html'"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
+                <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
+                <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
+                <button><img src="../assets/two-user-white.png" alt="icon-two-user" class="pf">Profile</button>
+                <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
+            </nav>
+            <div class="content">
                 <div>
-                    <span style="font-weight: 400; font-size: 12px;">Existing Password</span>
-                    <div class="input">
-                        <div>
-                            <img src="../assets/Password.png" alt="icon-password">
-                            <input type="password" placeholder="Enter Your Existing Password" name="existPass">
-                        </div>
-                        <div>
-                            <img src="../assets/EyeSlash.png" alt="icon-eye" width="12px" height="12px">
+                    <img src="../assets/two-user-blue.png" alt="profile-icon" width="15px" height="15px">
+                    <span style="font-weight: 600;">Profile</span>
+                </div>
+                <div class="info">
+                    <span>Change Password</span>
+                    <div>
+                        <span style="font-weight: 400; font-size: 12px;">Existing Password</span>
+                        <div class="input">
+                            <div>
+                                <img src="../assets/Password.png" alt="icon-password">
+                                <input type="password" placeholder="Enter Your Existing Password" name="existPass">
+                            </div>
+                            <div>
+                                <img src="../assets/EyeSlash.png" alt="icon-eye" width="12px" height="12px">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <span style="font-weight: 400; font-size: 12px;">New Password</span>
-                    <div class="input">
-                        <div>
-                            <img src="../assets/Password.png" alt="icon-password">
-                            <input type="password" placeholder="Enter Your New Password" name="newPass">
-                        </div>
-                        <div>
-                            <img src="../assets/EyeSlash.png" alt="icon-eye" width="12px" height="12px">
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <span style="font-weight: 400; font-size: 12px;">Confirm New Password</span>
-                    <div class="input">
-                        <div>
-                            <img src="../assets/Password.png" alt="icon-password">
-                            <input type="password" placeholder="Re-Type Your New Password" name="confirmPass">
-                        </div>
-                        <div>
-                            <img src="../assets/EyeSlash.png" alt="icon-eye" width="12px" height="12px">
+                    <div>
+                        <span style="font-weight: 400; font-size: 12px;">New Password</span>
+                        <div class="input">
+                            <div>
+                                <img src="../assets/Password.png" alt="icon-password">
+                                <input type="password" placeholder="Enter Your New Password" name="newPass">
+                            </div>
+                            <div>
+                                <img src="../assets/EyeSlash.png" alt="icon-eye" width="12px" height="12px">
+                            </div>
                         </div>
                     </div>
+                    <div>
+                        <span style="font-weight: 400; font-size: 12px;">Confirm New Password</span>
+                        <div class="input">
+                            <div>
+                                <img src="../assets/Password.png" alt="icon-password">
+                                <input type="password" placeholder="Re-Type Your New Password" name="confirmPass">
+                            </div>
+                            <div>
+                                <img src="../assets/EyeSlash.png" alt="icon-eye" width="12px" height="12px">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="submit" value="newPassword" name="newPassword">Submit</button>
                 </div>
-                <button class="submit" value="newPassword" name="newPassword">Submit</button>
             </div>
         </div>
-    </div>
+    </form>
 </body>
 </html>

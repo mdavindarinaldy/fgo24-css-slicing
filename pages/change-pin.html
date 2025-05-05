@@ -117,34 +117,36 @@
             </div>
         </div>
     </header>
-    <div class="main">
-        <nav>
-            <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
-            <button onclick="window.location.href='transfer.html'"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
-            <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
-            <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
-            <button><img src="../assets/two-user-white.png" alt="icon-two-user" class="pf">Profile</button>
-            <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
-        </nav>
-        <div class="content">
-            <div>
-                <img src="../assets/two-user-blue.png" alt="profile-icon" width="15px" height="15px">
-                <span style="font-weight: 600;">Profile</span>
-            </div>
-            <div class="info">
-                <span>Change Pin &#128075;</span>
-                <span>Please save your pin because this is so important</span>
-                <div class="pincode">
-                    <input type="password" inputmode="numeric" maxlength="1" id="pin1">
-                    <input type="password" inputmode="numeric" maxlength="1" id="pin2">
-                    <input type="password" inputmode="numeric" maxlength="1" id="pin3">
-                    <input type="password" inputmode="numeric" maxlength="1" id="pin4">
-                    <input type="password" inputmode="numeric" maxlength="1" id="pin5">
-                    <input type="password" inputmode="numeric" maxlength="1" id="pin6">
+    <form>
+        <div class="main">
+            <nav>
+                <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
+                <button onclick="window.location.href='transfer.html'"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
+                <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
+                <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
+                <button><img src="../assets/two-user-white.png" alt="icon-two-user" class="pf">Profile</button>
+                <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
+            </nav>
+            <div class="content">
+                <div>
+                    <img src="../assets/two-user-blue.png" alt="profile-icon" width="15px" height="15px">
+                    <span style="font-weight: 600;">Profile</span>
                 </div>
-                <button class="submit" value="validatePin" name="validatePin">Submit</button>
+                <div class="info">
+                    <span>Change Pin &#128075;</span>
+                    <span>Please save your pin because this is so important</span>
+                    <div class="pincode">
+                        <input type="password" inputmode="numeric" maxlength="1" id="pin1">
+                        <input type="password" inputmode="numeric" maxlength="1" id="pin2">
+                        <input type="password" inputmode="numeric" maxlength="1" id="pin3">
+                        <input type="password" inputmode="numeric" maxlength="1" id="pin4">
+                        <input type="password" inputmode="numeric" maxlength="1" id="pin5">
+                        <input type="password" inputmode="numeric" maxlength="1" id="pin6">
+                    </div>
+                    <button class="submit" value="validatePin" name="validatePin">Submit</button>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 </body>
 </html>
