@@ -206,8 +206,38 @@
         div.benefit {
             width: 100svw;
             height: 25svh;
-            background-color: rebeccapurple;
+            background-color: #FFFFFF;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            box-sizing: border-box;
+            padding: 20px 100px;
         }
+        div.benefit>div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
+            width: 20svw;
+        }
+        div.benefit>div>div:nth-child(2) {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 200px;
+        }
+        div.benefit>div>img {
+            width: 40px;
+            height: 40px;
+        }
+        span.subtitle {
+            font-weight: 500;
+            font-size: 14px;
+        }
+        span.paragraph {
+            font-weight: 300;
+            font-size: 12px;
+        }
+        
         div.packages {
             width: 100svw;
             height: 75svh;
@@ -280,6 +310,27 @@
         </div>
     </div>
     <div class="benefit">
+        <div>
+            <img src="./assets/headphone-circle.png" alt="headphone-icon">
+            <div>
+                <span class="subtitle">24/7 Support</span>
+                <span class="paragraph">We have 24/7 contact support so you can contact us whenever you want and we will respond it.</span>
+            </div>
+        </div>
+        <div>
+            <img src="./assets/shield-circle.png" alt="shield-icon">
+            <div>
+                <span class="subtitle">Data Privacy</span>
+                <span class="paragraph">We make sure your data is safe in our database and we will encrypt any data you submitted to us.</span>
+            </div>
+        </div>
+        <div>
+            <img src="./assets/download-circle.png" alt="download-icon">
+            <div>
+                <span class="subtitle">Easy Download</span>
+                <span class="paragraph">Zwallet is 100% totally free to use it's now available on Google Play Store and App Store.</span>
+            </div>
+        </div>
     </div>
     <div class="packages">
     </div>
