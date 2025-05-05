@@ -237,11 +237,65 @@
             font-weight: 300;
             font-size: 12px;
         }
-        
         div.packages {
             width: 100svw;
             height: 75svh;
-            background-color: yellow;
+            background-color: #FFFFFF;
+            display: flex;
+            gap: 20px;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+        div.packages>div:first-child {
+            width: 40%;
+            height: 100%;
+            display: flex;
+            gap: 15px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        div.packages>div:first-child>span:first-child {
+            color: #2948FF;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        div.packages>div:first-child>span:nth-child(2){
+            font-weight: 700;
+            font-size: 20px;
+        }
+        div.packages>div:first-child>span:nth-child(3){
+            font-weight: 200;
+            font-size: 16px;
+            width: 90%;
+        }
+        div.packages>div:first-child>a {
+            box-sizing: border-box;
+            width: 30%;
+            height: 40px;
+            text-decoration: none;
+            color: #FFFFFF;
+            background-color: #2948FF;
+            border-radius: 5px;
+            padding: 10px 30px;
+        }
+        div.packages>div:last-child {
+            width: 50%;
+            height: 100%;
+            position: relative;
+        }
+        div.packages>div:last-child>img:first-child {
+            position: absolute;
+            z-index: 1;
+            bottom: 40px;
+            width: 600px;
+        }
+        div.packages>div:last-child>img:last-child {
+            position: absolute;
+            z-index: 2;
+            bottom: 18px;
+            left: 180px;
         }
         div.features {
             width: 100svw;
@@ -333,10 +387,26 @@
         </div>
     </div>
     <div class="packages">
+        <div>
+            <span>WELCOME TO E-WALLET</span>
+            <span>Your All-in-One Digital Payment Solution</span>
+            <span>Say goodbye to cash and hello to the future of payments! With e-wallet, you have the power of secure, fast, and convenient digital transactions right at your fingertips. Whether you're shopping, dining out, or sending money to loved ones, we've got you covered.</span>
+            <a href="./pages/login.html">Get Started</a>
+        </div>
+        <div>
+            <img src="./assets/background.png" alt="background-image">
+            <img src="./assets/picture2.png" alt="gambar-dashboard">
+        </div>
     </div>
     <div class="features">
     </div>
     <div class="sponsors">
     </div>
+    <div class="testimony">
+    </div>
+    <div class="download">
+    </div>
+    <footer>
+    </footer>
 </body>
 </html>
