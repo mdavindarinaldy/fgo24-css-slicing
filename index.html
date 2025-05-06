@@ -68,10 +68,13 @@
             font-weight: 500;
             text-decoration: none;
         }
-        div.sign-in-up>a:last-child {
+        div.sign-in-up>a:nth-child(2) {
             border: 1px solid #FFFFFF;
             background-color: #FFFFFF;
             color: #2948FF;
+        }
+        div.sign-in-up>button.dropdown {
+            display: none;
         }
         div.main {
             width: 100svw;
@@ -606,6 +609,171 @@
             font-size: 14px;
             font-weight: 400;
         }
+
+        @media (min-width: 1024px) {
+            div.benefit {
+                width: 100svw;
+            }
+        }
+
+        @media (max-width: 640px) {
+            div.sign-in-up>a {
+                display: none;
+            }
+            div.sign-in-up>button.dropdown {
+                display: flex;
+            }
+            button.dropdown {
+                border: none;
+                background-color: #2948FF;
+            }
+            button.dropdown>img {
+                width: 15px;
+                height: 15px;
+            }
+            button.dropdown>ul {
+                display: none;
+            }
+            div.main {
+                padding: 0 20px;
+                box-sizing: border-box;
+            }
+            div.main>div:first-child {
+                font-size: 26px;
+                align-self: flex-start;
+                text-align: left;
+                width: 80svw;
+                height: 5svh;
+                margin: 0; /*iniiii*/
+            }
+            div.main>div:last-child {
+                flex-direction: column;
+                height: fit-content;
+                justify-items: center;
+            }
+            div.main>div>div>img.upper {
+                bottom: -647px;
+                width: 170px;
+                height: 240px;
+                left: 16svw;
+            }
+            div.main>div>div>img.bottom {
+                width: 180px;
+                height: 270px;
+                bottom: -646px;
+                left: 0svw;
+            }
+            div.main>div>div:last-child {
+                position: absolute;
+                width: 90svw;
+                align-items: flex-start;
+                top: -30px;
+            }
+            div.benefit {
+                height: fit-content;
+                grid-template-columns: repeat(1,1fr);
+                gap: 15px;
+                place-items: center;
+                padding: 30px 0px;
+            }
+            div.benefit>div {
+                width: max-content;
+            }
+            div.packages {
+                flex-direction: column;
+                height: fit-content;
+                width: 100%;
+            }
+            div.packages>div:first-child {
+                width: 70%;
+                position: relative;
+                height: 550px;
+                bottom: -100px;
+            }
+
+            div.packages>div:first-child>span:nth-child(2),  div.packages>div:first-child>span:first-child, div.packages>div:first-child>span:nth-child(3)  {
+                text-align: center;
+                width: 100%;
+            }
+            a.getStarted {
+                width: 100%;
+                text-align: center;
+            }
+            div.packages>div:last-child {
+                width: 100%;
+            }
+            div.packages>div:last-child>img:first-child {
+                width: 70%;
+                top: -505px;
+                left: 60px;
+            }
+            div.packages>div:last-child>img:last-child {
+                top: -588px;
+                left: 90px;
+                width: 180px;
+                height: 220px;
+            }
+            div.features {
+                flex-direction: column;
+                height: fit-content;
+            }
+            div.features>div {
+                width:80%
+            }
+            div.features > img {
+                width: 260px;
+                height: 300px;
+            }
+            div.sponsors {
+                margin-top: 30px;
+                flex-direction: column;
+                height: fit-content;
+            }
+            div.sponsors > div:first-child {
+                width: 80%;
+            }
+            div.sponsors>div:last-child {
+                flex-direction: column;
+            }
+            div.sponsors>div:first-child>span {
+                width: 100%;
+                text-align: center;
+            }
+            div.testimony>div:nth-child(3)>img {
+                display: none;
+            }
+            div.testimony>div:nth-child(3)>div {
+                width: 80%;
+            }
+            div.download {
+                height: fit-content;
+                flex-direction: column-reverse;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0 20px;
+                margin: 40px 0 20px 0;
+            }
+            div.download>div:last-child{
+                width: 100%;
+                justify-content: center;
+            }
+            div.download>div:first-child {
+                height: 400px;
+            }
+            div.download>div>img.bottom, div.download>div>img.upper {
+                bottom: 0px;
+            }
+            footer {
+                height: fit-content;
+                box-sizing: border-box;
+                padding: 10px 30px;
+                gap: 30px;
+            }
+            footer>div {
+                grid-template-columns: repeat(1,1fr);
+                gap: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -617,6 +785,13 @@
         <div class="sign-in-up">
             <a href="./pages/login.html">Sign In</a>
             <a href="./pages/register.html">Sign Up</a>
+            <button class="dropdown">
+                <img src="./assets/dropdown.png" alt="dropdown-icon">
+                <ul>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                </ul>
+            </button>
         </div>
     </header>
     <div class="main">
