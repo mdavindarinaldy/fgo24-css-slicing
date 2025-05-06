@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="dashboard-style.css">
-    <style>
+    <style>       
         div.content {
             display: grid;
             width: 70svw;
             grid-template-areas: 
-            "balance in out history"
+            "balinout balinout balinout history"
             "service service service history"
             "chart chart chart history"
             "chart chart chart history"
@@ -18,27 +18,24 @@
             gap: 20px;
         }
         .bal-in-out {
-            background-color: #FFFFFF;
             border: 1px solid #E8E8E8;
             box-sizing: border-box;
             width: 15svw;
             height: 15svh;
             padding: 10px;
-            grid-area: balance;
             display: flex;
             flex-direction: column;
             align-items: left;
             justify-content: space-between;
             justify-items: center;
         }
-        .balance {
-            grid-area: balance;
-        }
-        .in {
-            grid-area: in;
-        }
-        .out {
-            grid-area: out;
+        div.content>div:first-child {
+            grid-area: balinout;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
         }
         .service {
             background-color: #FFFFFF;
@@ -71,6 +68,7 @@
             align-items: center;
             justify-items: left;
             gap: 5px;
+            width: 10svw;
         }
         div.bal-in-out>span:nth-child(2) {
             font-size: 20px;
@@ -212,6 +210,136 @@
             text-decoration: none;
             font-size: 8px;
         }
+
+        @media (max-width: 640px) {
+            html,body {
+                overflow-y: scroll;
+            }
+            header {
+                background-color: #2948FF;
+                box-shadow: 5px 5px 10px rgba(13, 37, 155, 0.5);
+                justify-items: flex-start;
+                border: none;
+                position: fixed;
+                padding: 0 10px;
+                z-index: 5;
+            }
+            header>div.logo, header>div>button.dropdown-btn, header>div>div.dropdown-content {
+                display: none;
+            }
+            div.profile>div>span:first-child {
+                display: flex;
+            }
+            div.profile>div>span {
+                color: #FFFFFF
+            }
+            div.profile {
+                flex-direction: row-reverse;
+                justify-content: flex-start;
+            }
+            nav {
+                position: fixed;
+                bottom: 0;
+                height: fit-content;
+                width: 100svw;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+                background-color: #FFFFFF;
+                box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+                padding: 10px 5px;
+            }
+            nav>button {
+                flex-direction: column;
+                font-size: 8px;
+                gap: 3px;
+            }
+            div.main>nav>button:last-child {
+                display: none;
+            }
+            div.content {
+                width: 100svw;
+                margin: 0;
+                margin-top: 10svh;
+                padding: 0;
+                grid-template-areas: 
+                "balinout"
+                "service"
+                "chart"
+                "history"
+                ;
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+            div.content>div:first-child {
+                grid-area: balinout;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                height: 20svh;
+                width: 95svw;
+                margin: 5px 10px;
+                box-sizing: border-box;
+                padding: 5px;
+                border: 1px solid #E8E8E8;
+                border-radius: 5px;
+                background-image: url('../assets/wave.png');
+                background-position: bottom;
+                background-repeat:no-repeat;
+                background-size: contain;
+                box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            }
+            .bal-in-out {
+                width: 30%;
+                height: 80%;
+                border: none;
+            }
+            .bal-in-out>div>img {
+                display: none;
+            }
+            .bal-in-out>div:first-child>span {
+                font-size: 12px;
+            }
+            div.bal-in-out>span:nth-child(2) {
+                font-size: 14px;
+            }
+            div.content>div>div>span:last-child {
+                height: 2svh;
+            }
+            div.content>div>div:first-child>span:last-child {
+                color:#E8E8E8;
+            }
+            div.service {
+                border: none;
+                width: 100svw;
+            }
+            div.service>span {
+                display: none;
+            }
+            div.service>div {
+                width: 100svw;
+                justify-content: space-evenly;
+            }
+            div.service>div>button {
+                width: 50%;
+                justify-content: center;
+                gap: 10px;
+            }
+            div.chart {
+                border: none
+            }
+            div.chart>img {
+                width: 90svw;
+            }
+            div.history {
+                width: 100svw;
+                margin-bottom: 10svh;
+                border: none;
+            }
+            div.history>div {
+                width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -221,7 +349,10 @@
             <span>E-Wallet</span>
         </div>
         <div class="profile dropdown">
-            <span>Ghaluh Wizard</span>
+            <div>
+                <span>Hello,</span>
+                <span>Ghaluh Wizard</span>
+            </div>
             <img src="../assets/ghaluh.png" alt="foto-profile">
             <button class="dropdown-btn"><img src="../assets/down.png" alt="icon-dropdown"></button>
             <div class="dropdown-content">
@@ -240,29 +371,31 @@
             <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
         </nav>
         <div class="content">
-            <div class="balance bal-in-out">
-                <div>
-                    <img src="../assets/balance.png" alt="balance-icon" width="15px" height="15px">
-                    <span>Balance</span>
+            <div>
+                <div class="bal-in-out">
+                    <div>
+                        <img src="../assets/balance.png" alt="balance-icon" width="15px" height="15px">
+                        <span>Balance</span>
+                    </div>
+                    <span>Rp.120.000</span>
+                    <span>+2% <span>&#x21AF;</span> 3 Days Ago</span>
                 </div>
-                <span>Rp.120.000</span>
-                <span>+2% <span>&#x21AF;</span> 3 Days Ago</span>
-            </div>
-            <div class="in bal-in-out">
-                <div>
-                    <img src="../assets/income.png" alt="income-icon" width="15px" height="15px">
-                    <span>Income</span>
+                <div class="bal-in-out">
+                    <div>
+                        <img src="../assets/income.png" alt="income-icon" width="15px" height="15px">
+                        <span>Income</span>
+                    </div>
+                    <span>Rp.2.120.000</span>
+                    <span>+11.01% <span>&#x21AF;</span></span>
                 </div>
-                <span>Rp.2.120.000</span>
-                <span>+11.01% <span>&#x21AF;</span></span>
-            </div>
-            <div class="out bal-in-out">
-                <div>
-                    <img src="../assets/outcome.png" alt="outcome-icon" width="15px" height="15px">
-                    <span>Expense</span>
+                <div class="bal-in-out">
+                    <div>
+                        <img src="../assets/outcome.png" alt="outcome-icon" width="15px" height="15px">
+                        <span>Expense</span>
+                    </div>
+                    <span>Rp.200.000</span>
+                    <span style="color:red;">-5.06% <span style="transform: none;">&#x21AF;</span></span>
                 </div>
-                <span>Rp.200.000</span>
-                <span style="color:red;">-5.06% <span style="transform: none;">&#x21AF;</span></span>
             </div>
             <div class="history">
                 <div>

@@ -85,6 +85,9 @@ header {
 .dropdown:hover>div.dropdown-content {
     display: block;
 }
+div.profile>div>span:first-child {
+    display: none;
+}
 div.main {
     display: flex;
     flex-direction: row;
