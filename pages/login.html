@@ -69,7 +69,14 @@
             display: flex;
             gap: 10px;
         }
-        .left>div:nth-child(6) {
+        .left>div:nth-child(4) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            gap: 8px;
+        }
+        .left>div:nth-child(5) {
             display: flex;
             justify-content: space-between;
         }
@@ -79,7 +86,7 @@
             border: none;
             border-top: 1px solid #DEDEDE;
         }
-        .left>div:nth-child(6)>span {
+        .left>div:nth-child(5)>span {
             text-align: center;
             color: #AAAAAA;
             font-size: 10px;
@@ -140,6 +147,31 @@
             align-self: center;
             font-size: 10px;
         }
+        @media (max-width: 640px) {
+            .left {
+                border: none;
+                border-radius: 0;
+                width: 100%;
+                padding: 0px 10px;
+                gap: 20px;
+            }
+            .right {
+                display: none;
+            }
+            div.left>div:nth-child(4) {
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                height: 20px;
+                width: 100%;
+            }
+            div.left>div:nth-child(4)>button {
+                width: 50%;
+            }
+            div.left>div:nth-child(4)>button>span {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -151,12 +183,14 @@
             </div>
             <span>Hello Welcome Back &#128075;</span>
             <span>Fill out the form correctly or you can login with several option.</span>
-            <button class="signIn">
-                <img src="../assets/Google.png" alt="Logo Google" width="15px" height="15px">Sign In With Google
-            </button>
-            <button class="signIn">
-                <img src="../assets/Facebook.png" alt="Logo Facebook" width="15px" height="15px">Sign In With Facebook
-            </button>
+            <div>
+                <button class="signIn">
+                    <img src="../assets/Google.png" alt="Logo Google" width="15px" height="15px"><span>Sign In With Google</span>
+                </button>
+                <button class="signIn">
+                    <img src="../assets/Facebook.png" alt="Logo Facebook" width="15px" height="15px"><span>Sign In With Facebook</span>
+                </button>
+            </div>
             <div><hr/><span>Or</span><hr/></div>
             <div class="input">
                 <label for="email">Email</label>
