@@ -107,6 +107,73 @@
             width: 95%;
             gap: 10px;
         }
+        @media (max-width: 640px) {
+            header {
+                background-color: #2948FF;
+                box-shadow: 5px 5px 10px rgba(13, 37, 155, 0.5);
+                justify-items: flex-start;
+                border: none;
+                position: fixed;
+                padding: 0 10px;
+                z-index: 5;
+            }
+            header>div.logo, header>div>button.dropdown-btn, header>div>div.dropdown-content {
+                display: none;
+            }
+            div.profile>div>span:first-child {
+                display: flex;
+            }
+            div.profile>div>span {
+                color: #FFFFFF
+            }
+            div.profile {
+                flex-direction: row-reverse;
+                justify-content: flex-start;
+            }
+            nav {
+                position: fixed;
+                bottom: 0;
+                height: fit-content;
+                width: 100svw;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+                background-color: #FFFFFF;
+                box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+                padding: 10px 5px;
+            }
+            nav>button {
+                flex-direction: column;
+                font-size: 8px;
+                gap: 3px;
+            }
+            div.main>nav>button:last-child {
+                display: none;
+            }
+            div.main>nav>button:last-child {
+                display: none;
+            }
+            div.main>div.content {
+                width: 100svw;
+                height: 80svh;
+                margin: 0;
+                margin-top: 10svh;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+            }
+            .info>span:nth-child(2) {
+                font-size: 10px;
+                text-align: center;
+            }
+            div.main>div.content>div:last-child {
+                border: none;
+            }
+            div.main>div.content>div:first-child {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -116,7 +183,10 @@
             <span>E-Wallet</span>
         </div>
         <div class="profile dropdown">
-            <span>Ghaluh Wizard</span>
+            <div>
+                <span>Hello,</span>
+                <span>Ghaluh Wizard</span>
+            </div>
             <img src="../assets/ghaluh.png" alt="foto-profile">
             <button class="dropdown-btn"><img src="../assets/down.png" alt="icon-dropdown"></button>
             <div class="dropdown-content">
