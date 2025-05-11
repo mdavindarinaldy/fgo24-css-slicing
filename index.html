@@ -419,11 +419,13 @@
             gap: 10px;
             padding: 15px;
         }
-        section.testimony>div>div>div:nth-child(2) {
+        section.testimony>div>div>div:nth-child(3) {
             width:30%;
             display: flex;
             flex-direction: row;
             align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
             justify-content: center;
         }
         section.testimony>div>div>span:nth-child(2) {
@@ -438,6 +440,31 @@
             font-weight: 300;
             font-size: 12px;
             text-align: center;
+        }
+        section.testimony>div>div.hide {
+            display: none;
+            }
+        section.testimony>div>div.show {
+            display: flex;
+        }
+        button.arrow {
+            width: 3svw;
+            height: 3svw;
+            border-radius: 1.5svw;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2svw;
+        }
+        button.on {
+            background-color: blue;
+            color: #FFFFFF;
+        }
+        button.off {
+            background-color: #DEDEDE;
+            color: #1f1f1f;
         }
         section.download {
             width: 100svw;
@@ -496,7 +523,6 @@
             justify-content: center;
             gap: 15px;
             width: 100%;
-
         }
         section.download>div:last-child>div:last-child>a {
             display: flex;
@@ -603,8 +629,27 @@
         }
         footer>div>form:last-child>div>input {
             font-size: 12px;
+            flex: 1;
             border: none;
             outline: none;
+        }
+        form#form>span.error {
+            color: rgba(246, 148, 2, 0.877);
+            font-size: 0.875rem;
+            display: none;
+            font-weight: 700;
+        }
+        form#form>span.error.show {
+            display: flex;
+        }
+        form#form>span.success {
+            color: rgba(21, 249, 59, 0.877);
+            font-size: 0.875rem;
+            display: none;
+            font-weight: 700;
+        }
+        form#form>span.success.show {
+            display: flex;
         }
         footer>div>form:last-child>button {
             padding: 8px;
@@ -631,6 +676,10 @@
             button.dropdown {
                 border: none;
                 background-color: #2948FF;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                position: relative;
             }
             button.dropdown>img {
                 width: 15px;
@@ -638,6 +687,42 @@
             }
             button.dropdown>ul {
                 display: none;
+            }
+            button.dropdown>ul.show {
+                display: flex;
+                list-style: none;
+                position: fixed;
+                flex-direction: column;
+                padding: 0;
+                margin: 0;
+                width: 100svw;
+                height: fit-content;
+                box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+                background-color: #ffffff;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                top: 10svh;
+                right: 0;
+            }
+            button.dropdown>ul>li>a {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                width: 100%;
+                height: fit-content;
+                padding: 10px;
+                box-sizing: border-box;
+                color: #2948FF;
+                font-size: 14px;
+                font-weight: 600;
+            }
+            button.dropdown>ul>li:last-child>a {
+                top: 15svh;
+            }
+            button.dropdown>ul>li>a:hover {
+                text-decoration: underline;
             }
             section.main {
                 height: 110svh;
@@ -648,7 +733,6 @@
                 font-size: 26px;
                 align-self: flex-start;
                 text-align: left;
-
                 min-width: 300px;
                 width: fit-content;
                 height: fit-content;
@@ -746,11 +830,19 @@
                 width: 100%;
                 text-align: center;
             }
-            section.testimony>div:nth-child(3)>img {
-                display: none;
-            }
             section.testimony>div:nth-child(3)>div {
-                width: 80%;
+                width: 50%;
+            }
+            button.arrow {
+                width: 6svw;
+                height: 6svw;
+                border-radius: 3svw;
+                border: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-size: 2svw;
             }
             section.download {
                 height: fit-content;
@@ -769,15 +861,15 @@
             }
             section.download>div>img.bottom {
                 bottom: 5svh;
-                left: 20svw;
-                width: 50svw;
-                height: 75svw;
+                left: 25svw;
+                width: 32svw;
+                height: 50svw;
             }
             section.download>div>img.upper {
                 bottom: 5svh;
                 left: 40svw;
-                width: 40svw;
-                height: 60svw;
+                width: 28svw;
+                height: 40svw;
             }
             footer {
                 height: fit-content;
@@ -788,6 +880,20 @@
             footer>div {
                 grid-template-columns: repeat(1,1fr);
                 gap: 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            section.download>div>img.bottom {
+                bottom: 5svh;
+                left: 20svw;
+                width: 50svw;
+                height: 75svw;
+            }
+            section.download>div>img.upper {
+                bottom: 5svh;
+                left: 40svw;
+                width: 40svw;
+                height: 60svw;
             }
         }
     </style>
@@ -801,11 +907,11 @@
         <div class="sign-in-up">
             <a href="./pages/login.html">Sign In</a>
             <a href="./pages/register.html">Sign Up</a>
-            <button class="dropdown">
+            <button class="dropdown" id="dropdown">
                 <img src="./assets/dropdown.png" alt="dropdown-icon">
-                <ul>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
+                <ul id="dropdownList">
+                    <li><a href="./pages/login.html">Sign In</a></li>
+                    <li><a href="./pages/register.html">Sign Up</a></li>
                 </ul>
             </button>
         </div>
@@ -912,7 +1018,7 @@
             <span>What Our Users Are Saying</span>
             <span>Ready to experience the future of payments? Download e-wallet now and enjoy a world of convenience at your fingertips.</span>
             <div>
-                <img src="./assets/left-icon.png" alt="left-icon">
+                <button class="arrow" type="button" id="leftArrow">&larr;</button>
                 <div>
                     <img src="./assets/testimony.png" alt="photo-testimony">
                     <span>James Bond</span>
@@ -927,7 +1033,35 @@
                     <span>“</span>
                     <span>I've been using the e-wallet for over two years now, and I'm very satisfied with the ease of use. This has completely changed the way I shop and conduct financial transactions.</span>
                 </div>
-                <img src="./assets/right-icon.png" alt="right-icon">
+                <div class="hide">
+                    <img src="./assets/testimony2.png" alt="photo-testimony">
+                    <span>Sherina Claw</span>
+                    <div>
+                        <img src="./assets/star-on.png" alt="star-icon">
+                        <img src="./assets/star-on.png" alt="star-icon">
+                        <img src="./assets/star-on.png" alt="star-icon">
+                        <img src="./assets/star-on.png" alt="star-icon">
+                        <img src="./assets/star-on.png" alt="star-icon">
+                        <span>5.0</span>
+                    </div>
+                    <span>“</span>
+                    <span>I use this app since 2 years ago and this is the best app that I`ve ever use in my entire life.</span>
+                </div>
+                <div class="hide">
+                    <img src="./assets/testimony3.png" alt="photo-testimony">
+                    <span>Ujang Kayu</span>
+                    <div>
+                        <img src="./assets/star-on.png" alt="star-icon">
+                        <img src="./assets/star-on.png" alt="star-icon">
+                        <img src="./assets/star-on.png" alt="star-icon">
+                        <img src="./assets/star-on.png" alt="star-icon">
+                        <img src="./assets/star-on.png" alt="star-icon">
+                        <span>5.0</span>
+                    </div>
+                    <span>“</span>
+                    <span>Since I'm using this app, I'm not going to move to another similar app. Thank you Zwallet!</span>
+                </div>
+                <button class="arrow on" type="button" id="rightArrow">&rarr;</button>
             </div>
         </section>
         <section class="download">
@@ -974,17 +1108,82 @@
                     <a href="#"><img src="./assets/github.png" alt="github-logo"></a>
                 </div>
             </div>
-            <form>
+            <form id="form" novalidate>
                 <span class="sub">NEWSLETTER</span>
                 <div>
                     <img src="./assets/mail-black.png" alt="mail-icon">
-                    <input type="email" placeholder="Enter Your Email">
+                    <input type="email" placeholder="Enter Your Email" id="email">
                 </div>
-                <button>Subcribe</button>
+                <span class="error" id="email-error">*Please enter a valid email address</span>
+                <span class="success" id="email-success">*Thank you for subscribing!</span>
+                <button type="submit">Subcribe</button>
             </form>
         </div>
         <hr>
         <span>&#169; Copyright 2022, All Rights Reserved by ClarityUI</span>
     </footer>
+    <script>
+        const testimonials = document.querySelectorAll(`section.testimony>div>div`)
+        const leftArrow = document.querySelector('button#leftArrow')
+        const rightArrow = document.querySelector('button#rightArrow')
+
+        let currentIndex = 0
+
+        function updateTestimony() {
+            testimonials.forEach((item, index) => {
+                if (index === currentIndex) {
+                    item.setAttribute('class', 'show')
+                } else {
+                    item.setAttribute('class','hide')
+                }
+            })
+            leftArrow.classList.toggle('off', currentIndex === 0)
+            leftArrow.classList.toggle('on', currentIndex !== 0)
+
+            rightArrow.classList.toggle('off', currentIndex === testimonials.length - 1)
+            rightArrow.classList.toggle('on', currentIndex !== testimonials.length - 1)
+        }
+
+        leftArrow.addEventListener(`click`, () => {
+            if (currentIndex > 0) {
+                currentIndex--
+                updateTestimony()
+            }
+        })
+
+        rightArrow.addEventListener(`click`, () => {
+            if (currentIndex < testimonials.length - 1) {
+                currentIndex++
+                updateTestimony()
+            }
+        })
+
+        const form = document.getElementById('form')
+        const emailInput = document.getElementById('email')
+        const errorMessage = document.getElementById('email-error')
+        const successMessage = document.getElementById('email-success')
+
+        const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[a-zA-z]{2,4}$/
+        function isValidEmail(email) {
+            return emailRegEx.test(email)
+        }
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault()
+            const email = emailInput.value.trim()
+            if (isValidEmail(email)) {
+                errorMessage.classList.remove('show')
+                successMessage.classList.add('show')
+                form.reset()
+            } else {
+                errorMessage.classList.add('show')
+                successMessage.classList.remove('show')
+            }
+        })
+        const btn = document.getElementById('dropdown')
+        btn.addEventListener('click', function(){
+            document.getElementById('dropdownList').classList.toggle('show')
+        })
+    </script>
 </body>
 </html>
