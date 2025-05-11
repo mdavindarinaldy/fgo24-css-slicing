@@ -7,15 +7,22 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
-        html, body, form {
+        html {
+            width: 100svw;
+            height: 100svh;
+            overflow: hidden;
+        }
+        body, form {
             background-color: #2948FF;
             font-family: "Montserrat", sans-serif;
             display: flex;
             flex-direction: row;
             justify-items: center;
-            width: 100svw;
-            height: 100svh;
+            width: 100%;
+            height: 100%;
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         .left {
             background-color: #FFFFFF;
@@ -39,8 +46,8 @@
             height: 100%;
         }
         .right>img {
-            width: 80svh;
-            height: 80svh;
+            width: 50svw;
+            height: 50svw;
         }
         .logo {
             display: flex;
@@ -59,7 +66,7 @@
             font-weight: 600;
             color: #2948FF;
         }
-        button.signIn {
+        button.signUp {
             justify-content: center;
             border: 1px solid #E8E8E8;
             border-radius: 100px;
@@ -68,6 +75,9 @@
             height: 40px;
             display: flex;
             gap: 10px;
+        }
+        button:hover {
+            cursor: pointer;
         }
         .left>div:nth-child(5) {
             display: flex;
@@ -114,6 +124,7 @@
             border: 0px;
             width: 90%;
             font-size: 10px;
+            outline: none;
         }
         button.register {
             border: 1px solid #2948FF;
@@ -123,8 +134,8 @@
             height: 35px;
             font-size: 12px;
         }
-        label {
-            font-size: 13px;
+        div.input>span {
+            font-size: 0.6rem;
             font-weight: 450;
         }
         div.left>div:nth-child(4) {
@@ -135,7 +146,7 @@
             gap: 8px;
         }
         div.left>span:nth-child(2) {
-            font-size: 21px;
+            font-size: 18px;
             font-weight: 500;
         }
         div.left>span:nth-child(3) {            
@@ -147,7 +158,6 @@
             align-self: center;
             font-size: 10px;
         }
-
         @media (max-width: 640px) {
             .left {
                 border: none;
@@ -172,11 +182,38 @@
             div.left>div:nth-child(4)>button>span {
                 display: none;
             }
+            div.left>span:nth-child(2) {
+                font-size: 1rem;
+            }
+            div.left>span:nth-child(3) {
+                font-size: 0.6rem;
+            }
+        }
+        span.error {
+            color: rgba(246, 148, 2, 0.877);
+            display: none;
+        }
+        span.error.show {
+            display: flex;
+        }
+        .validation-list {
+            font-size: 0.5rem;
+            color: #4F5665;
+            margin-top: 1px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .validation-list li.valid {
+            color: green;
+        }
+        .validation-list li.invalid {
+            color: red;
         }
     </style>
 </head>
 <body>
-    <form>
+    <form id="form" novalidate>
         <div class="left">
             <div class="logo">
                 <img src="../assets/logo.png" alt="Logo">
@@ -185,44 +222,184 @@
             <span>Start Accessing Banking Needs With All Devices and All Platforms With 30.000+ Users</span>
             <span>Transferring money is easier than ever, you can access Zwallet wherever you are. Desktop, laptop, mobile phone? we cover all of that for you!</span>
             <div>
-                <button class="signIn">
-                    <img src="../assets/Google.png" alt="Logo Google" width="15px" height="15px"><span>Sign In With Google</span>
+                <button class="signUp" type="button">
+                    <img src="../assets/Google.png" alt="Logo Google" width="15px" height="15px"><span>Sign Up With Google</span>
                 </button>
-                <button class="signIn">
-                    <img src="../assets/Facebook.png" alt="Logo Facebook" width="15px" height="15px"><span>Sign In With Facebook</span>
+                <button class="signUp" type="button">
+                    <img src="../assets/Facebook.png" alt="Logo Facebook" width="15px" height="15px"><span>Sign Up With Facebook</span>
                 </button>
             </div>
             <div><hr/><span>Or</span><hr/></div>
             <div class="input">
-                <label for="email">Email</label>
+                <span>Email</span>
                 <div>
                     <img src="../assets/mail.png" alt="email-logo" class="icon">
-                    <input type="text" id="name" placeholder="Enter Your Mail">
-                    <button><img src="../assets/EyeSlash.png" alt="buka-password" class="icon"></button>
+                    <input type="email" id="email" placeholder="Enter Your Mail" autocomplete="off">
                 </div>
+                <span class="error" id="email-error">*Email address is Invalid</span>
+                <span class="error" id="email-registered">*Email address is already registered</span>
             </div>
             <div class="input">
-                <label for="password">Password</label>
+                <span>Password</span>
                 <div>
                     <img src="../assets/Password.png" alt="pass-icon" class="icon">
                     <input type="password" id="pass" placeholder="Enter Your Password">
-                    <button><img src="../assets/EyeSlash.png" alt="buka-password" class="icon"></button>
+                    <button class="eye" type="button"><img src="../assets/eye.svg" alt="icon-password" class="icon"></button>
                 </div>
+                <span class="error" id="pass-error">*Password must be at least 8 characters, with uppercase, lowercase, and number</span>
+                <ul class="validation-list" id="pass-validation">
+                    <li id="length">At least 8 characters</li>
+                    <li id="uppercase">At least one uppercase letter</li>
+                    <li id="lowercase">At least one lowercase letter</li>
+                    <li id="number">At least one number character</li>
+                </ul>
             </div>
             <div class="input">
-                <label for="confirm">Confirm Password</label>
+                <span>Confirm Password</span>
                 <div>
                     <img src="../assets/Password.png" alt="pass-icon" class="icon">
                     <input type="password" id="confirm" placeholder="Enter Your Password Again">
-                    <button><img src="../assets/EyeSlash.png" alt="buka-password" class="icon"></button>
+                    <button class="eye" type="button"><img src="../assets/eye.svg" alt="icon-password" class="icon"></button>
                 </div>
+                <span class="error" id="confirm-error">*Passwords do not match</span>
             </div>
-            <button class="register">Register</button>
+            <button class="register" type="submit">Register</button>
             <span>Have An Account? <a href="./login.html" style="text-decoration: none;">Login</a></span>
         </div>
         <div class="right">
             <img src="../assets/tangan-dompet.png" alt="Icon e-Wallet">
         </div>
     </form>
+    <script>
+        const form = document.getElementById('form')
+        const emailInput = document.getElementById('email')
+        const passInput = document.getElementById('pass')
+        const confirmInput = document.getElementById('confirm')
+        const passError = document.getElementById('pass-error')
+        const emailError = document.getElementById('email-error')
+        const emailRegistered = document.getElementById('email-registered')
+        const confirmError = document.getElementById('confirm-error')
+        const validationList = document.getElementById('pass-validation')
+        const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[a-zA-z]{2,4}$/
+        const passRegEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/
+
+        function isValidEmail(email) {
+            return emailRegEx.test(email)
+        }
+        function isEmailDuplicate(email) {
+            const users = JSON.parse(localStorage.getItem('users')) || []
+            console.log(users)
+            return users.some(user => user.email.toLowerCase() === email.toLowerCase())
+        }
+        function isValidPassword(password) {
+            return passRegEx.test(password)
+        }
+        
+        function validatePassword(password) {
+            const rules = {
+                length: password.length >= 8,
+                uppercase: /[A-Z]/.test(password),
+                lowercase: /[a-z]/.test(password),
+                number: /\d/.test(password)
+            };
+            return rules;
+        }
+        function updatePasswordValidation(rules) {
+            document.getElementById('length').className = rules.length ? 'valid' : 'invalid'
+            document.getElementById('uppercase').className = rules.uppercase ? 'valid' : 'invalid'
+            document.getElementById('lowercase').className = rules.lowercase ? 'valid' : 'invalid'
+            document.getElementById('number').className = rules.number ? 'valid' : 'invalid'
+        }
+        
+        document.querySelectorAll(`.eye`).forEach(button => {
+            button.addEventListener('click', function() {
+                const input = button.previousElementSibling
+                const img = button.querySelector('img')
+                if (input.getAttribute('type') === 'password') {
+                    input.setAttribute('type','text')
+                    img.setAttribute ('src', '../assets/eye-off.svg') 
+                } else {
+                    input.setAttribute('type','password')
+                    img.setAttribute ('src', '../assets/eye.svg')
+                }
+            })
+        })
+        
+        passInput.addEventListener('input', function() {
+            const password = passInput.value.trim()
+            const rules = validatePassword(password)
+            updatePasswordValidation(rules)
+            if (password === '') {
+                passError.classList.remove('show')
+            } else if (!isValidPassword(password)) {
+                passError.classList.add('show')
+            } else {
+                passError.classList.remove('show')
+            }
+            if (confirmInput.value.trim() !== '') {
+                validateConfirmPassword()
+            }
+        })
+        function validateConfirmPassword() {
+            const password = passInput.value.trim()
+            const confirm = confirmInput.value.trim()
+            if (confirm === '') {
+                confirmError.classList.remove('show')
+            } else if (confirm !== password) {
+                confirmError.classList.add('show')
+            } else {
+                confirmError.classList.remove('show')
+            }
+        }
+        confirmInput.addEventListener('input', validateConfirmPassword());
+        
+        form.addEventListener('submit', function(event) {
+            event.preventDefault()
+            const email = emailInput.value.trim()
+            const password = passInput.value.trim()
+            const confirm = confirmInput.value.trim()
+            let isValid = true
+
+            if (isValidEmail(email)) {
+                emailError.classList.remove('show')
+            } else {
+                emailError.classList.add('show')
+                isValid = false
+            }
+
+            if (isEmailDuplicate(email)) {
+                emailRegistered.classList.add('show')
+                isValid = false
+            } else {
+                emailRegistered.classList.remove('show')
+            }
+
+            if(isValidPassword(password)) {
+                passError.classList.remove('show')
+            } else {
+                passError.classList.add('show')
+                isValid = false
+            }
+
+            if(password !== confirm) {
+                confirmError.classList.add('show')
+                isValid = false
+            } else {
+                confirmError.classList.remove('show')
+            }
+
+            if(isValid) {
+                const users = JSON.parse(localStorage.getItem('users')) || []
+                users.push({email, password})
+                localStorage.setItem('users', JSON.stringify(users))
+                form.reset()
+                validationList.querySelectorAll('li').forEach(li => { 
+                    li.classList.remove('valid')
+                    li.classList.remove('invalid')
+                })
+                window.location.href = './create-pin.html'
+            }
+        })
+    </script>
 </body>
 </html>

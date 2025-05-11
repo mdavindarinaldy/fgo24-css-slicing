@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Pin</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+        html, body, form {
+            background-color: #2948FF;
+            font-family: "Montserrat", sans-serif;
+            display: flex;
+            flex-direction: row;
+            justify-items: center;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+        .left {
+            background-color: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-top-right-radius: 40px;
+            border-bottom-right-radius: 40px;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0px 50px; /*coba cari cara biar nengah tanpa pake padding*/
+            gap: 15px;
+        }
+        .right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            height: 100%;
+        }
+        .right>img {
+            position: absolute;
+            bottom: 0;
+            width: 50svw;
+            height: 50svw;
+        }
+        .logo {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: left;
+            gap: 15px;
+        }
+        .logo>img {
+            width: 22px;
+            height: 22px;
+        }
+        .logo>span{
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2948FF;
+        }
+        .left>div:nth-child(6)>span {
+            text-align: center;
+            color: #AAAAAA;
+            font-size: 10px;
+            width: 180px;
+        }
+        button.submit {
+            border: 1px solid #2948FF;
+            border-radius: 6px;
+            background-color: #2948FF;
+            color: #FFFFFF;
+            height: 35px;
+            font-size: 12px;
+        }
+        div.left>span:nth-child(2) {
+            font-size: 21px;
+            font-weight: 500;
+        }
+        div.left>span:nth-child(3) {            
+            font-size: 12px;
+            font-weight: 400;
+            color:#4F5665;
+        }
+        .left>span:last-child {
+            align-self: center;
+            font-size: 10px;
+        }
+        .pincode {
+            display: flex;
+            justify-content: space-between;
+            height: 80px;
+            margin-bottom: 30px;
+            transition: all 0.1s;
+        }
+        div.input {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-items: left;
+        }
+        div.input>div {
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+            align-items: center;
+            height: 20px;
+            gap: 5px;
+            border: 1px solid #DEDEDE;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        div.input>div>button {
+            border: none;
+            background-color: #FFFFFF;
+        }
+        input {
+            border: 0px;
+            width: 90%;
+            height: fit-content;
+            font-size: 16px;
+            outline: none;
+        }
+        span.error {
+            color: rgba(246, 148, 2, 0.877);
+            display: none;
+        }
+        span.error.show {
+            display: flex;
+        }
+        img.icon {
+            width: 12px;
+            height: 12px;
+        }
+        @media (min-width: 1024px) {
+            .left {
+                height: 100%;
+            }
+        }
+        @media (max-width: 640px) {
+            form {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            div.right, .right>img {
+                display: none;
+            }
+            .left {
+                border-radius: 30px;
+                height: 55%;
+                width: 80%;
+                gap: 10px;
+                box-sizing: border-box;
+                padding: 0px 10px;
+            }
+            input {
+                font-size: 30px;
+                width: 30px;
+            }
+            div.input>div {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            div.left>span:nth-child(2) {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form id="form">
+        <div class="left">
+            <div class="logo">
+                <img src="../assets/logo.png" alt="Logo">
+                <span>E-Wallet</span>
+            </div>
+            <span>Create Your Pin First &#128075;</span>
+            <span>Create your PIN with 6 digits and please save your pin because this is so important</span>
+            <div class="input">
+                <label for="pass">PIN</label>
+                <div>
+                    <img src="../assets/Password.png" alt="pass-icon" class="icon">
+                    <input type="password" inputmode="numeric" id="pin" maxlength="6">
+                    <button class="eye" type="button"><img src="../assets/eye.svg" alt="icon-password" class="icon"></button>
+                </div>
+            </div>
+            <div class="input">
+                <label for="confirm">Confirm PIN</label>
+                <div>
+                    <img src="../assets/Password.png" alt="pass-icon" class="icon">
+                    <input type="password" inputmode="numeric" id="confirm" maxlength="6">
+                    <button class="eye" type="button"><img src="../assets/eye.svg" alt="icon-password" class="icon"></button>
+                </div>
+                <span class="error" id="confirm-error">*PIN do not match</span>
+            </div>
+            <button class="submit" type="submit">Submit</button>
+        </div>
+        <div class="right">
+            <img src="../assets/orang.png" alt="Icon e-Wallet">
+        </div>
+    </form>
+    <script>
+        const form = document.getElementById('form')
+        const pinInput = document.getElementById('pin')
+        const confirmInput = document.getElementById('confirm')
+        const pinRegEx = /^\d{6}$/;
+
+        document.querySelectorAll(`.eye`).forEach(button => {
+            button.addEventListener('click', function() {
+                const input = button.previousElementSibling
+                const img = button.querySelector('img')
+                if (input.getAttribute('type') === 'password') {
+                    input.setAttribute('type','text')
+                    img.setAttribute ('src', '../assets/eye-off.svg') 
+                } else {
+                    input.setAttribute('type','password')
+                    img.setAttribute ('src', '../assets/eye.svg')
+                }
+            })
+        })
+    </script>
+</body>
+</html>
