@@ -414,11 +414,11 @@
                 localStorage.setItem('currentLogin', JSON.stringify(currentLogin))
 
                 // untuk data users
-                const users = JSON.parse(localStorage.getItem('users')) || [];
-                const userIndex = users.findIndex(user => user.email === currentLogin.email);
+                const users = JSON.parse(localStorage.getItem('users')) || []
+                const userIndex = users.findIndex(user => user.email === currentLogin.email)
                 if (userIndex !== -1) {
-                    users[userIndex].password = password;
-                    localStorage.setItem('users', JSON.stringify(users));
+                    users[userIndex].password = password
+                    localStorage.setItem('users', JSON.stringify(users))
                 }
 
                 form.reset()
@@ -427,7 +427,7 @@
                     li.classList.remove('invalid')
                 })
                 
-                window.location.href = './dashboard.html';
+                window.location.href = './dashboard.html'
             }
         })
     </script>

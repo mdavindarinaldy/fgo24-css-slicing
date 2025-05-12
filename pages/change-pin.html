@@ -55,6 +55,7 @@
             border: 1px solid #E8E8E8;
             gap: 10px;
             padding: 10px;
+            max-width: 600px;
         }
         .info {
             display: flex;
@@ -64,9 +65,9 @@
         }
         .pincode {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-evenly;
             height: 80px;
-            width: 40svw;
+            width: 100%;
             margin-bottom: 30px;
             transition: all 0.1s;
         }
@@ -74,7 +75,7 @@
             border: 0px;
             font-size: 50px;
             text-align: center;
-            width: 60px;
+            width: 6svw;
             border-bottom: 2px solid #E8E8E8;
         }
         input:focus {
@@ -98,6 +99,9 @@
         .info>span:nth-child(2) {
             font-weight: 300;
             font-size: 13px;
+        }
+        button:hover {
+            cursor: pointer;
         }
         @media (max-width: 640px) {
             header {
@@ -169,7 +173,7 @@
                 width: 100%;
             }
             input {
-                width: 20px;
+                width: 5svw;
             }
         }
     </style>
@@ -189,19 +193,19 @@
             <button class="dropdown-btn"><img src="../assets/down.png" alt="icon-dropdown"></button>
             <div class="dropdown-content">
                 <a href="./edit-profile.html"><img src="../assets/two-user.png" alt="profile-icon" class="prof">Profile</a>
-                <a href="#" style="color:#D00000"><img src="../assets/logout.png" alt="icon-logout">Keluar</a>
+                <a href="../index.html" style="color:#D00000" id="a-logout"><img src="../assets/logout.png" alt="icon-logout">Keluar</a>
             </div>
         </div>
     </header>
-    <form>
+    <form id="form">
         <div class="main">
             <nav>
-                <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
-                <button onclick="window.location.href='transfer.html'"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
-                <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
-                <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
-                <button><img src="../assets/two-user-white.png" alt="icon-two-user" class="pf">Profile</button>
-                <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
+                <button onclick="window.location.href='dashboard.html'" type="button"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
+                <button onclick="window.location.href='transfer.html'" type="button"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
+                <button onclick="window.location.href='history-transaction.html'" type="button"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
+                <button onclick="window.location.href='top-up.html'" type="button"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
+                <button type="button"><img src="../assets/two-user-white.png" alt="icon-two-user" class="pf">Profile</button>
+                <button type="button" id="log-out"><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
             </nav>
             <div class="content">
                 <div>
@@ -224,5 +228,55 @@
             </div>
         </div>
     </form>
+    <script>
+        const logOut = document.getElementById('a-logout')
+        logOut.addEventListener('click', function() {
+            localStorage.removeItem('currentLogin')
+        })
+
+        const btnLogOut = document.getElementById('log-out')
+        btnLogOut.addEventListener('click', function() {
+            localStorage.removeItem('currentLogin')
+            window.location.href = '../index.html'
+        })
+
+        const currentLogin = JSON.parse(localStorage.getItem('currentLogin'))
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+
+        const pinInputs = document.querySelectorAll('div.pincode>input')
+        pinInputs.forEach((input, index) => {
+            input.addEventListener('input', () => {
+                input.value = input.value.replace(/\D/g, '');
+                if (input.value.length === 1 && index < pinInputs.length - 1) {
+                    pinInputs[index + 1].focus()
+                }
+            })
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Backspace' && input.value.length === 0 && index > 0) {
+                    pinInputs[index - 1].focus();
+                }
+            });
+        })
+
+        const form = document.getElementById('form')
+        form.addEventListener('submit', function(event) {
+            event.preventDefault()
+            const enteredPin = Array.from(pinInputs).map(input => input.value).join('')
+
+            // untuk current login
+            currentLogin.pin = enteredPin
+            localStorage.setItem('currentLogin', JSON.stringify(currentLogin))
+
+            // untuk data users
+            const userIndex = users.findIndex(user => user.email === currentLogin.email)
+            if (userIndex !== -1) {
+                users[userIndex].pin = enteredPin
+                localStorage.setItem('users', JSON.stringify(users))
+            }
+
+            form.reset()
+            window.location.href = './dashboard.html'
+        })
+    </script>
 </body>
 </html>
