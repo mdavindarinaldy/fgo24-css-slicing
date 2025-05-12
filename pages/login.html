@@ -217,7 +217,7 @@
                 <div>
                     <img src="../assets/Password.png" alt="pass-icon" class="icon">
                     <input type="password" id="pass" placeholder="Enter Your Password">
-                    <button><img src="../assets/EyeSlash.png" alt="buka-password" class="icon"></button>
+                    <button type="button" id="eye"><img src="../assets/eye.svg" alt="buka-password" class="icon"></button>
                 </div>
                 <span class="error" id="passError">*Password is wrong</span>
             </div>
@@ -254,12 +254,27 @@
             passError.classList.remove('show')
             return true
         }
+
+        document.querySelector('#eye').addEventListener('click', function() {
+            const img = this.querySelector('img');
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                img.src = '../assets/eye-off.svg';
+            } else {
+                passInput.type = 'password';
+                img.src = '../assets/eye.svg';
+            }
+        })
         
         const form = document.getElementById('form')
         form.addEventListener('submit', function(event) {
             event.preventDefault()
             isValid = isUserRegistered()
             if (isValid) {
+                const email = emailInput.value.trim().toLowerCase()
+                const pass = passInput.value.trim()
+                const loginData = {email, pass}
+                localStorage.setItem('currentLogin', JSON.stringify(loginData))
                 window.location.href = './enter-pin.html'
             }
         })
