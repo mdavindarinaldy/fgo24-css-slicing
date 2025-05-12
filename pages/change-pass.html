@@ -107,6 +107,9 @@
             width: 95%;
             gap: 10px;
         }
+        button:hover {
+            cursor: pointer;
+        }
         @media (max-width: 640px) {
             header {
                 background-color: #2948FF;
@@ -177,6 +180,7 @@
         span.error {
             color: rgba(246, 148, 2, 0.877);
             display: none;
+            font-size: 10px;
         }
         span.error.show {
             display: flex;
@@ -195,6 +199,10 @@
         .validation-list li.invalid {
             color: red;
         }
+        button.eye {
+            background: unset;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -212,19 +220,19 @@
             <button class="dropdown-btn"><img src="../assets/down.png" alt="icon-dropdown"></button>
             <div class="dropdown-content">
                 <a href="./edit-profile.html"><img src="../assets/two-user.png" alt="profile-icon" class="prof">Profile</a>
-                <a href="#" style="color:#D00000"><img src="../assets/logout.png" alt="icon-logout">Keluar</a>
+                <a href="../index.html" style="color:#D00000" id="a-logout"><img src="../assets/logout.png" alt="icon-logout">Keluar</a>
             </div>
         </div>
     </header>
-    <form>
+    <form id="form">
         <div class="main">
             <nav>
-                <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
-                <button onclick="window.location.href='transfer.html'"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
-                <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
-                <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
-                <button><img src="../assets/two-user-white.png" alt="icon-two-user" class="pf">Profile</button>
-                <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
+                <button onclick="window.location.href='./dashboard.html'" type="button"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
+                <button onclick="window.location.href='./transfer.html'" type="button"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
+                <button onclick="window.location.href='./history-transaction.html'" type="button"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
+                <button onclick="window.location.href='./top-up.html'" type="button"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
+                <button type="button"><img src="../assets/two-user-white.png" alt="icon-two-user" class="pf">Profile</button>
+                <button type="button" id="log-out"><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
             </nav>
             <div class="content">
                 <div>
@@ -241,7 +249,7 @@
                                 <input type="password" placeholder="Enter Your Existing Password" id="existPass">
                             </div>
                             <div>
-                                <img src="../assets/EyeSlash.png" alt="icon-eye" width="12px" height="12px">
+                                <button type="button" class="eye"><img src="../assets/eye.svg" alt="icon-eye" width="12px" height="12px"></button>
                             </div>
                         </div>
                         <span class="error" id="passError">*Existing password is wrong</span>
@@ -251,10 +259,10 @@
                         <div class="input">
                             <div>
                                 <img src="../assets/Password.png" alt="icon-password">
-                                <input type="password" placeholder="Enter Your New Password" name="newPass">
+                                <input type="password" placeholder="Enter Your New Password" id="pass">
                             </div>
                             <div>
-                                <img src="../assets/EyeSlash.png" alt="icon-eye" width="12px" height="12px">
+                                <button type="button" class="eye"><img src="../assets/eye.svg" alt="icon-eye" width="12px" height="12px"></button>
                             </div>
                         </div>
                         <span class="error" id="pass-error">*Password must be at least 8 characters, with uppercase, lowercase, and number</span>
@@ -263,6 +271,7 @@
                             <li id="uppercase">At least one uppercase letter</li>
                             <li id="lowercase">At least one lowercase letter</li>
                             <li id="number">At least one number character</li>
+                            <li id="same">Password should be different with the existing one</li>
                         </ul>
                     </div>
                     <div>
@@ -270,18 +279,157 @@
                         <div class="input">
                             <div>
                                 <img src="../assets/Password.png" alt="icon-password">
-                                <input type="password" placeholder="Re-Type Your New Password" name="confirmPass">
+                                <input type="password" placeholder="Re-Type Your New Password" id="confirm">
                             </div>
                             <div>
-                                <img src="../assets/EyeSlash.png" alt="icon-eye" width="12px" height="12px">
+                                <button type="button" class="eye"><img src="../assets/eye.svg" alt="icon-eye" width="12px" height="12px"></button>
                             </div>
                         </div>
                         <span class="error" id="confirm-error">*Passwords do not match</span>
                     </div>
-                    <button class="submit" value="newPassword" name="newPassword">Submit</button>
+                    <button type="submit" value="newPassword" id="newPassword">Submit</button>
                 </div>
             </div>
         </div>
     </form>
+    <script>
+        const existPass = document.getElementById('existPass')
+        const passInput = document.getElementById('pass')
+        const confirmInput = document.getElementById('confirm')
+        const existError = document.getElementById('passError')
+        const passError = document.getElementById('pass-error')
+        const confirmError = document.getElementById('confirm-error')
+        const validationList = document.getElementById('pass-validation')
+
+        const currentLogin = JSON.parse(localStorage.getItem('currentLogin'))
+        const passRegEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/
+
+        const logOut = document.getElementById('a-logout')
+        logOut.addEventListener('click', function() {
+            localStorage.removeItem('currentLogin')
+        })
+
+        const btnLogOut = document.getElementById('log-out')
+        btnLogOut.addEventListener('click', function() {
+            localStorage.removeItem('currentLogin')
+            window.location.href = '../index.html'
+        })
+
+        function isValidPassword(password) {
+            return passRegEx.test(password)
+        }
+
+        function validatePassword(password) {
+            const existingPassword = currentLogin.pass || '';
+            return {
+                length: password.length >= 8,
+                uppercase: /[A-Z]/.test(password),
+                lowercase: /[a-z]/.test(password),
+                number: /\d/.test(password),
+                same: password !== existingPassword
+            };
+        }
+
+        function updatePasswordValidation(rules) {
+            document.getElementById('length').className = rules.length ? 'valid' : 'invalid'
+            document.getElementById('uppercase').className = rules.uppercase ? 'valid' : 'invalid'
+            document.getElementById('lowercase').className = rules.lowercase ? 'valid' : 'invalid'
+            document.getElementById('number').className = rules.number ? 'valid' : 'invalid'
+            document.getElementById('same').className = rules.same ? 'valid' : 'invalid'
+        }
+
+        passInput.addEventListener('input', function() {
+            const password = passInput.value.trim()
+            const rules = validatePassword(password)
+            updatePasswordValidation(rules)
+            if (password === '') {
+                passError.classList.remove('show')
+            } else if (!isValidPassword(password)) {
+                passError.classList.add('show')
+            } else {
+                passError.classList.remove('show')
+            }
+            validateConfirmPassword()
+        })
+
+        function validateConfirmPassword() {
+            const password = passInput.value.trim()
+            const confirm = confirmInput.value.trim()
+            if (confirm === '') {
+                confirmError.classList.remove('show')
+            } else if (confirm !== password) {
+                confirmError.classList.add('show')
+            } else {
+                confirmError.classList.remove('show')
+            }
+        }
+        confirmInput.addEventListener('input', validateConfirmPassword())
+
+        document.querySelectorAll('.eye').forEach(button => {
+            button.addEventListener('click', function() {
+                const input = button.closest('.input').querySelector('input')
+                const img = button.querySelector('img')
+                if (input.type === 'password') {
+                    input.type = 'text'
+                    img.src = '../assets/eye-off.svg'
+                } else {
+                    input.type = 'password'
+                    img.src = '../assets/eye.svg'
+                }
+            })
+        })
+
+        const form = document.getElementById('form')
+        form.addEventListener('submit', function(event) {
+            event.preventDefault()
+            const exist = existPass.value.trim()
+            const password = passInput.value.trim()
+            const confirm = confirmInput.value.trim()
+            let isValid = true
+
+            if (exist !== currentLogin.pass) {
+                existError.classList.add('show')
+                isValid = false
+            } else {
+                existError.classList.remove('show')
+            }
+
+            if (!isValidPassword(password) || password === currentLogin.pass) {
+                passError.classList.add('show')
+                isValid = false
+            } else {
+                passError.classList.remove('show')
+            }
+
+            if (password !== confirm) {
+                confirmError.classList.add('show')
+                isValid = false
+            } else {
+                confirmError.classList.remove('show')
+            }
+
+            if(isValid) {
+                // untuk current login
+                currentLogin.pass = password
+                localStorage.setItem('currentLogin', JSON.stringify(currentLogin))
+
+                // untuk data users
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                const userIndex = users.findIndex(user => user.email === currentLogin.email);
+                if (userIndex !== -1) {
+                    users[userIndex].password = password;
+                    localStorage.setItem('users', JSON.stringify(users));
+                }
+
+                form.reset()
+                validationList.querySelectorAll('li').forEach(li => { 
+                    li.classList.remove('valid')
+                    li.classList.remove('invalid')
+                })
+                
+                window.location.href = './dashboard.html';
+            }
+        })
+    </script>
 </body>
 </html>
