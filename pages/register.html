@@ -389,9 +389,8 @@
             }
 
             if(isValid) {
-                const users = JSON.parse(localStorage.getItem('users')) || []
-                users.push({email, password})
-                localStorage.setItem('users', JSON.stringify(users))
+                const users = {email, password}
+                localStorage.setItem('currentRegister', JSON.stringify(users))
                 form.reset()
                 validationList.querySelectorAll('li').forEach(li => { 
                     li.classList.remove('valid')

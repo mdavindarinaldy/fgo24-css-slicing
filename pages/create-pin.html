@@ -43,6 +43,8 @@
             bottom: 0;
             width: 50svw;
             height: 50svw;
+            max-height: 500px;
+            max-width: 500px;
         }
         .logo {
             display: flex;
@@ -126,6 +128,7 @@
         span.error {
             color: rgba(246, 148, 2, 0.877);
             display: none;
+            font-size: 12px;
         }
         span.error.show {
             display: flex;
@@ -133,6 +136,77 @@
         img.icon {
             width: 12px;
             height: 12px;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+        div#modal {
+            display: none;
+        }
+        div#modal.show {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            overflow:hidden;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        div#modal>div {
+            width: 40%;
+            height: fit-content;
+            background-color: white;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            box-sizing: border-box;
+            padding: 15px;
+        }
+        div#modal>div>span:first-child {
+            border-bottom: 1px solid #E8E8E8;
+            width: 100%;
+            font-size: 12px;
+            color:#4F5665;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        div#modal>div>div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 100%;
+            gap: 20px;
+        }
+        div#modal>div>div>img {
+            width: 20svw;
+            height: 20svw;
+        }
+        div#modal>div>div>a {
+            width: 100%;
+            border: 1px solid #2948FF;
+            background-color: #2948FF;
+            color: #FFFFFF;
+            border-radius: 5px;
+            font-size: 10px;
+            padding: 5px 0;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 550;
+        }
+        div#modal>div>div>span:nth-child(2) {
+            font-weight: 500;
+            font-size: 16px;
+            text-align: center;
         }
         @media (min-width: 1024px) {
             .left {
@@ -169,6 +243,14 @@
             div.left>span:nth-child(2) {
                 font-size: 16px;
             }
+            div#modal>div {
+                width: 60%;
+                height: fit-content;
+            }
+            div#modal>div>div>span:nth-child(2) {
+                font-size: 13px;
+                font-weight: 400;
+            }
         }
     </style>
 </head>
@@ -182,12 +264,13 @@
             <span>Create Your Pin First &#128075;</span>
             <span>Create your PIN with 6 digits and please save your pin because this is so important</span>
             <div class="input">
-                <label for="pass">PIN</label>
+                <label for="pin">PIN</label>
                 <div>
                     <img src="../assets/Password.png" alt="pass-icon" class="icon">
                     <input type="password" inputmode="numeric" id="pin" maxlength="6">
                     <button class="eye" type="button"><img src="../assets/eye.svg" alt="icon-password" class="icon"></button>
                 </div>
+                <span class="error" id="pin-error">*PIN must be exactly 6 digits</span>
             </div>
             <div class="input">
                 <label for="confirm">Confirm PIN</label>
@@ -204,11 +287,38 @@
             <img src="../assets/orang.png" alt="Icon e-Wallet">
         </div>
     </form>
+    <div id="modal">
+        <div>
+            <span>Pendaftaran Akun Berhasil!</span>
+            <div>
+                <img src="../assets/success.png" alt="success-image">
+                <span>Akun anda sudah berhasil didaftarkan! Silakan login dengan akun yang sudah anda daftarkan untuk menggunakan E-Wallet</span>
+                <a href="./login.html" id="login">Login</a>
+            </div>
+        </div>
+    </div>
     <script>
         const form = document.getElementById('form')
         const pinInput = document.getElementById('pin')
         const confirmInput = document.getElementById('confirm')
-        const pinRegEx = /^\d{6}$/;
+        const pinError = document.getElementById('pin-error')
+        const confirmError = document.getElementById('confirm-error')
+        const pinRegEx = /^\d{6}$/
+        let isValid = false
+
+        function isValidPin(pin) {
+            return pinRegEx.test(pin)
+        }
+
+        pinInput.addEventListener('input', function() {
+            pinInput.value = pinInput.value.replace(/\D/g,'').slice(0,6)
+            validatePinRealTime()
+        })
+
+        confirmInput.addEventListener('input', function() {
+            confirmInput.value = confirmInput.value.replace(/\D/g,'').slice(0,6)
+            validatePinRealTime()
+        })
 
         document.querySelectorAll(`.eye`).forEach(button => {
             button.addEventListener('click', function() {
@@ -222,6 +332,55 @@
                     img.setAttribute ('src', '../assets/eye.svg')
                 }
             })
+        })
+
+        function validatePinRealTime() {
+            const pin = pinInput.value.trim()
+            const confirm = confirmInput.value.trim()
+
+            if (pin === '') {
+                pinError.classList.remove('show')
+            } else if (!isValidPin(pin)) {
+                pinError.classList.add('show')
+            } else {
+                pinError.classList.remove('show')
+            }
+
+            if (confirm === '') {
+                confirmError.classList.remove('show')
+            } else if (confirm !== pin) {
+                confirmError.classList.add('show')
+            } else {
+                confirmError.classList.remove('show')
+            }
+
+            isValid = isValidPin(pin) && (pin === confirm)
+        }
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault()
+            const modal = document.getElementById('modal')
+            if (isValid) {
+                const {email, password} = JSON.parse(localStorage.getItem('currentRegister'));
+
+                let users = JSON.parse(localStorage.getItem('users')) || []
+                users.push({
+                    email, 
+                    password,
+                    pin: pinInput.value.trim()
+                })
+
+                localStorage.setItem('users', JSON.stringify(users))
+                form.reset()
+                isValid = false
+                modal.classList.add('show')
+            }
+        })
+
+        const login = document.getElementById('login')
+        login.addEventListener('click', function() {
+            const modal = document.getElementById('modal')
+            modal.classList.remove('show')
         })
     </script>
 </body>
