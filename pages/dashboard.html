@@ -15,12 +15,14 @@
             "chart chart chart history"
             "chart chart chart history"
             "chart chart chart history";
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
         .bal-in-out {
             border: 1px solid #E8E8E8;
             box-sizing: border-box;
             width: 15svw;
+            flex: 1;
             height: 15svh;
             padding: 10px;
             display: flex;
@@ -59,7 +61,7 @@
         .chart {
             background-color: #FFFFFF;
             border: 1px solid #E8E8E8;
-            grid-area:chart;
+            grid-area: chart;
             height: 51svh;
         }
         div.bal-in-out>div {
@@ -70,8 +72,11 @@
             gap: 5px;
             width: 10svw;
         }
+        div.bal-in-out>div:first-child>span {
+            font-size: 1svw;
+        }
         div.bal-in-out>span:nth-child(2) {
-            font-size: 20px;
+            font-size: 1.5svw;
             font-weight: 700;
         }
         div.bal-in-out>span:nth-child(3) {
@@ -116,6 +121,7 @@
             grid-template-areas: 
             "span button"
             "img img";
+            grid-template-columns: repeat(2,1fr);
             justify-content: space-between;
             box-sizing: border-box;
             align-items: center;
@@ -149,7 +155,7 @@
         div.chart>img {
             grid-area: img;
             height: 270px;
-            width: 600px;
+            width: 100%;
         }
         div.history {
             display:flex;
@@ -178,22 +184,22 @@
             width: 90px;
         }
         div.history>div>div>span:first-child{
-            font-size: 13px;
+            font-size: 1svw;
             font-weight: 600;
         }
         div.history>div>div>span:last-child{
-            font-size: 11px;
+            font-size: 1svw;
             font-weight: 450;
             color: #4F5665;
         }
         div.history>div>span.plus {
             color: #1EC15F;
-            font-size: 13px;
+            font-size: 1svw;
             font-weight: 500;
         }
         div.history>div>span.minus {
             color: #D00000;
-            font-size: 13px;
+            font-size: 1svw;
             font-weight: 500;
         }
         div.history>div:first-child{
@@ -210,7 +216,6 @@
             text-decoration: none;
             font-size: 8px;
         }
-
         @media (max-width: 640px) {
             html,body {
                 overflow-y: scroll;
@@ -268,6 +273,8 @@
                 "chart"
                 "history"
                 ;
+                align-items: center;
+                justify-content: center;
                 grid-template-columns: 1fr;
                 gap: 5px;
                 background: linear-gradient(to bottom, #2948FF 0 10%, transparent 10% 90%);
@@ -284,6 +291,7 @@
                 padding: 5px;
                 border: 1px solid #E8E8E8;
                 background-color: #FFFFFF;
+                box-sizing: border-box;
                 border-radius: 5px;
                 background-image: url('../assets/wave.png');
                 background-position: bottom;
@@ -302,8 +310,33 @@
             .bal-in-out>div:first-child>span {
                 font-size: 12px;
             }
+            div.bal-in-out>div:first-child>span {
+                font-size: 4svw;
+            }
             div.bal-in-out>span:nth-child(2) {
-                font-size: 14px;
+                font-size: 3svw;
+            }
+            div.history>div>div {
+                flex: 1;
+            }
+            div.history>div>div>span:first-child{
+                font-size: 3svw;
+                font-weight: 600;
+            }
+            div.history>div>div>span:last-child{
+                font-size: 3svw;
+                font-weight: 450;
+                color: #4F5665;
+            }
+            div.history>div>span.plus {
+                color: #1EC15F;
+                font-size: 3svw;
+                font-weight: 500;
+            }
+            div.history>div>span.minus {
+                color: #D00000;
+                font-size: 3svw;
+                font-weight: 500;
             }
             div.content>div>div>span:last-child {
                 height: 2svh;
@@ -342,6 +375,12 @@
                 width: 90%;
             }
         }
+        button:hover {
+            cursor: pointer;
+        }
+        select:hover {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -359,18 +398,18 @@
             <button class="dropdown-btn"><img src="../assets/down.png" alt="icon-dropdown"></button>
             <div class="dropdown-content">
                 <a href="./edit-profile.html"><img src="../assets/two-user.png" alt="profile-icon" class="prof">Profile</a>
-                <a href="#" style="color:#D00000"><img src="../assets/logout.png" alt="icon-logout">Keluar</a>
+                <a href="../index.html" style="color:#D00000" id="a-logout"><img src="../assets/logout.png" alt="icon-logout">Keluar</a>
             </div>
         </div>
     </header>
     <div class="main">
         <nav>
-            <button><img src="../assets/dashboard-white.png" alt="icon-dashboard" class="db">Dashboard</button>
-            <button onclick="window.location.href='transfer.html'"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
-            <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
-            <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
+            <button type="button"><img src="../assets/dashboard-white.png" alt="icon-dashboard" class="db">Dashboard</button>
+            <button onclick="window.location.href='transfer.html'" type="button"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
+            <button onclick="window.location.href='history-transaction.html'" type="button"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
+            <button onclick="window.location.href='top-up.html'" type="button"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
             <button onclick="window.location.href='edit-profile.html'"><img src="../assets/two-user.png" alt="icon-two-user" class="pf">Profile</button>
-            <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
+            <button type="button" id="log-out"><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
         </nav>
         <div class="content">
             <div>
@@ -404,7 +443,7 @@
                     <span>Transaction History</span>
                     <a href="./history-transaction.html">See All</a>
                 </div>
-                <div>
+                <!-- <div>
                     <img src="../assets/person1.png" alt="Profile Photo">
                     <div>
                         <span>Robert Fox</span>
@@ -475,13 +514,13 @@
                         <span>Transfer</span>
                     </div>
                     <span class="plus">+Rp50.000</span>
-                </div>
+                </div> -->
             </div>
             <div class="service">
                 <span>Fast Service</span>
                 <div>
-                    <button><img src="../assets/upload-white.png" alt="top-up-icon">Top Up</button>
-                    <button><img src="../assets/send-white.png" alt="transfer-icon">Transfer</button>
+                    <button type="button" id="button-topup"><img src="../assets/upload-white.png" alt="top-up-icon">Top Up</button>
+                    <button type="button" id="button-transfer"><img src="../assets/send-white.png" alt="transfer-icon">Transfer</button>
                 </div>
             </div>
             <div class="chart">
@@ -502,5 +541,64 @@
             </div>
         </div>
     </div>
+    <script>
+        const url = "https://raw.githubusercontent.com/mdavindarinaldy/fgo24-node-datasource/refs/heads/main/data-users"
+        const btnTopUp = document.getElementById('button-topup')
+        const btnTransfer = document.getElementById('button-transfer')
+
+        btnTopUp.addEventListener('click', function() {
+            window.location.href = './top-up.html'
+        })
+        btnTransfer.addEventListener('click', function() {
+            window.location.href = './transfer.html'
+        })
+
+        async function fetchData(url) {
+            const res = await fetch(url)
+            const data = await res.json()
+            for (let i=0;i<9;i++) {
+                const divContainer = document.createElement('div')
+                const imgContainer = document.createElement('img')
+                const spanContainer = document.createElement('div')
+                const spanNameContainer = document.createElement('span')
+                const spanTypeContainer = document.createElement('span')
+                const spanNominalContainer = document.createElement('span')
+
+                imgContainer.setAttribute('src', data.results[i].picture.medium)
+                imgContainer.setAttribute('alt', 'profile-photo')
+
+                spanNameContainer.textContent = data.results[i].name.first + ' ' + data.results[i].name.last
+                spanTypeContainer.textContent = data.results[i].transaction
+                spanNominalContainer.textContent = data.results[i].nominal
+                if (data.results[i].transaction==='transfer') {
+                    spanNominalContainer.classList.add('plus')
+                } else {
+                    spanNominalContainer.classList.add('minus')
+                }
+
+                spanContainer.append(spanNameContainer)
+                spanContainer.append(spanTypeContainer)
+
+                divContainer.append(imgContainer)
+                divContainer.append(spanContainer)
+                divContainer.append(spanNominalContainer)
+
+                document.querySelector('div.history').append(divContainer)
+            }
+        }
+        
+        fetchData(url)
+
+        const logOut = document.getElementById('a-logout')
+        logOut.addEventListener('click', function() {
+            localStorage.removeItem('currentLogin')
+        })
+
+        const btnLogOut = document.getElementById('log-out')
+        btnLogOut.addEventListener('click', function() {
+            localStorage.removeItem('currentLogin')
+            window.location.href = '../index.html'
+        })
+    </script>
 </body>
 </html>

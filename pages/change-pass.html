@@ -174,6 +174,27 @@
                 display: none;
             }
         }
+        span.error {
+            color: rgba(246, 148, 2, 0.877);
+            display: none;
+        }
+        span.error.show {
+            display: flex;
+        }
+        .validation-list {
+            font-size: 0.5rem;
+            color: #4F5665;
+            margin-top: 1px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .validation-list li.valid {
+            color: green;
+        }
+        .validation-list li.invalid {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -217,12 +238,13 @@
                         <div class="input">
                             <div>
                                 <img src="../assets/Password.png" alt="icon-password">
-                                <input type="password" placeholder="Enter Your Existing Password" name="existPass">
+                                <input type="password" placeholder="Enter Your Existing Password" id="existPass">
                             </div>
                             <div>
                                 <img src="../assets/EyeSlash.png" alt="icon-eye" width="12px" height="12px">
                             </div>
                         </div>
+                        <span class="error" id="passError">*Existing password is wrong</span>
                     </div>
                     <div>
                         <span style="font-weight: 400; font-size: 12px;">New Password</span>
@@ -235,6 +257,13 @@
                                 <img src="../assets/EyeSlash.png" alt="icon-eye" width="12px" height="12px">
                             </div>
                         </div>
+                        <span class="error" id="pass-error">*Password must be at least 8 characters, with uppercase, lowercase, and number</span>
+                        <ul class="validation-list" id="pass-validation">
+                            <li id="length">At least 8 characters</li>
+                            <li id="uppercase">At least one uppercase letter</li>
+                            <li id="lowercase">At least one lowercase letter</li>
+                            <li id="number">At least one number character</li>
+                        </ul>
                     </div>
                     <div>
                         <span style="font-weight: 400; font-size: 12px;">Confirm New Password</span>
@@ -247,6 +276,7 @@
                                 <img src="../assets/EyeSlash.png" alt="icon-eye" width="12px" height="12px">
                             </div>
                         </div>
+                        <span class="error" id="confirm-error">*Passwords do not match</span>
                     </div>
                     <button class="submit" value="newPassword" name="newPassword">Submit</button>
                 </div>
