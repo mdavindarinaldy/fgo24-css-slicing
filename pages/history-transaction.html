@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History Transaction Page</title>
     <link rel="stylesheet" href="dashboard-style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
         html, body {
@@ -55,6 +56,7 @@
             width: 100%;
             padding: 10px;
             border: 1px solid #E8E8E8;
+            box-sizing: border-box;
         }
         div.content>div.info>div:first-child {
             display: flex;
@@ -62,7 +64,7 @@
             width: 100%;
             justify-content: space-between;
         }
-        div.content>div.info>div:first-child>div {
+        div.content>div.info>div:first-child>form {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -87,66 +89,6 @@
             font-size: 10px;
             font-weight: 400;
             width: 250px;
-        }
-        div.result {
-            display: flex;
-            flex-direction: column;
-            box-sizing: border-box;
-            width: 100%;
-            padding: 0 5px;
-            gap: 5px;
-            font-size: 12px;
-            color: #4F5665;
-            overflow-y: scroll;
-        }
-        div.result>div {
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-        }
-        div.result>div>img:first-child {
-            width: 40px;
-            height: 40px;
-        }
-        div.result>div>img:last-child {
-            width: 15px;
-            height: 15px;
-        }
-        div.result>div>span:nth-child(2) {
-            width: 40%;
-            text-align: center;
-        }
-        div.result>div:nth-child(odd) {
-            background-color: #F9FAFB;
-        }
-        span.green {
-            color: #1EC15F;
-        }
-        span.red {
-            color: #D00000;
-        }
-        div.pages {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            font-size: 12px;
-            font-weight: 300;
-        }
-        div.pages>div:last-child {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-        }
-        div.pages>div:last-child>button {
-            font-size: 12px;
-            font-weight: 100;
-            color:#4F5665;
-        }
-        div.pages>div:last-child>button:nth-child(2) {
-            color: #2948FF;
         }
         @media (max-width: 640px) {
             header {
@@ -188,6 +130,9 @@
                 font-size: 8px;
                 gap: 3px;
             }
+            nav>button:nth-child(3) {
+                font-size: 8px;
+            }    
             div.main>nav>button:last-child {
                 display: none;
             }
@@ -207,25 +152,93 @@
             div.main>div.content>div:first-child {
                 display: none;
             }
-            div.pages {
-                display: none;
-            }
             div.content>div.info>div:first-child {
                 flex-direction: column;
                 gap: 10px;
             }
-            div.result {
-                gap: 30px;
+            tr>th {
+                font-size: 2svw;
             }
-            div.result>div {
-                height: 30px;
+            tr>td {
+                font-size: 2svw;
             }
-            div.result>div>img:first-child, div.result>div>img:last-child {
-                display: none;
+            tr>td>img {
+                width: 5svw;
+                height: 5svw;
             }
-            div.result>div>span:nth-child(2) {
-                text-align: left;
+            .footer {
+                flex-direction: column;
             }
+        }
+        button:hover {
+            cursor: pointer;
+        }
+        div.index-button>button {
+            padding: 3px 5px;
+            color: black;
+            background: #E8E8E84D;
+            font-size: 8px;
+            border: 1px solid #606060;
+            cursor: pointer;
+        }
+        div.index-button>button.active, div.index-button>button:hover {
+            background: linear-gradient(to bottom, #9c9c9c 0%, #111 100%);
+        }
+        #error {
+            font-size: 12px;
+            text-align: center;
+            color: #ff0000;
+            margin-top: 20px;
+        }
+        .footer {
+            margin-top: 16px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .green {
+            color: #00ff00;
+        }
+        .red {
+            color: #ff0000;
+        }
+        .table {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td, th {
+            font-weight: bold;
+            cursor: pointer;
+            padding: 2px;
+            text-align: left;
+        }
+        th {
+            font-size: 16px;
+            background-color: #f0efef;
+        }
+        td {
+            font-size: 14px;
+            background-color: #F9FAFB;
+        }
+        td>img {
+            width: 4svw;
+            height: 4svw;
+        }
+        .favorite-btn {
+            background: none;
+            border: none;
+            color: #606060;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 0;
+        }
+        .favorite-btn.favorited {
+            color: #ffd700;
         }
     </style>
 </head>
@@ -244,18 +257,18 @@
             <button class="dropdown-btn"><img src="../assets/down.png" alt="icon-dropdown"></button>
             <div class="dropdown-content">
                 <a href="./edit-profile.html"><img src="../assets/two-user.png" alt="profile-icon" class="prof">Profile</a>
-                <a href="#" style="color:#D00000"><img src="../assets/logout.png" alt="icon-logout">Keluar</a>
+                <a href="../index.html" id="a-logout" style="color:#D00000"><img src="../assets/logout.png" alt="icon-logout">Keluar</a>
             </div>
         </div>
     </header>
     <div class="main">
         <nav>
-            <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
-            <button onclick="window.location.href='transfer.html'"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
-            <button><img src="../assets/history-white.png" alt="icon-history" class="ht">History</button>
-            <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
-            <button onclick="window.location.href='edit-profile.html'"><img src="../assets/two-user.png" alt="icon-two-user" class="pf">Profile</button>
-            <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
+            <button onclick="window.location.href='dashboard.html'" type="button"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
+            <button onclick="window.location.href='transfer.html'" type="button"><img src="../assets/send.png" alt="icon-transfer" class="tf">Transfer</button>
+            <button type="button"><img src="../assets/history-white.png" alt="icon-history" class="ht">History</button>
+            <button onclick="window.location.href='top-up.html'" type="button"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
+            <button onclick="window.location.href='edit-profile.html'" type="button"><img src="../assets/two-user.png" alt="icon-two-user" class="pf">Profile</button>
+            <button type="button" id="logout"><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
         </nav>
         <div class="content">
             <div>
@@ -265,84 +278,175 @@
             <div class="info">
                 <div>
                     <span style="font-size: 14px; font-weight: 500;">Find Transaction</span>
-                    <div>
-                        <input type="text" placeholder="Enter Number or Full Name">
-                        <button class="search"><img src="../assets/Search.png" alt="search-icon"></button>
-                    </div>
+                    <form id="form">
+                        <input type="text" placeholder="Enter Name" id="searchInput">
+                        <button class="search" type="submit"><img src="../assets/Search.png" alt="search-icon"></button>
+                    </form>
                 </div>
-                <div class="result">
-                    <div>
-                        <img src="../assets/people1.png" alt="result-search-image">
-                        <span>Ghaluh 1</span>
-                        <span>082116304337</span>
-                        <span class="green">Rp50.000</span>
-                        <img src="../assets/delete.png" alt="star-icon">
-                    </div>
-                    <div>
-                        <img src="../assets/people2.png" alt="result-search-image">
-                        <span>Cameron Williamson</span>
-                        <span>(308) 555-0121</span>
-                        <span class="red">Rp50.000</span>
-                        <img src="../assets/delete.png" alt="delete-icon">
-                    </div>
-                    <div>
-                        <img src="../assets/people3.png" alt="result-search-image">
-                        <span>Cody Fisher</span>
-                        <span>(704) 555-0127</span>
-                        <span class="green">Rp50.000</span>
-                        <img src="../assets/delete.png" alt="delete-icon">
-                    </div>
-                    <div>
-                        <img src="../assets/people4.png" alt="result-search-image">
-                        <span>Kristin Watson</span>
-                        <span>(603) 555-0123</span>
-                        <span class="red">Rp50.000</span>
-                        <img src="../assets/delete.png" alt="delete-icon">
-                    </div>
-                    <div>
-                        <img src="../assets/people5.png" alt="result-search-image">
-                        <span>Floyd Miles</span>
-                        <span>(671) 555-0110</span>
-                        <span class="green">Rp50.000</span>
-                        <img src="../assets/delete.png" alt="delete-icon">
-                    </div>
-                    <div>
-                        <img src="../assets/people6.png" alt="result-search-image">
-                        <span>Wade Warren</span>
-                        <span>(225) 555-0118</span>
-                        <span class="red">Rp50.000</span>
-                        <img src="../assets/delete.png" alt="delete-icon">
-                    </div>
-                    <div>
-                        <img src="../assets/people7.png" alt="result-search-image">
-                        <span>Savannah Nguyen</span>
-                        <span>(217) 555-0113</span>
-                        <span class="green">Rp50.000</span>
-                        <img src="../assets/delete.png" alt="delete-icon">
-                    </div>
-                    <div>
-                    </div>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Photo</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Transaction</th>
+                                <th>Favorites</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
                 </div>
-                <div class="pages">
-                    <div>
-                        <span>Show 7 Entry From 100 Entries</span>
-                    </div>
-                    <div>
-                        <button>Prev</button>
-                        <button>1</button>
-                        <button>2</button>
-                        <button>3</button>
-                        <button>4</button>
-                        <button>5</button>
-                        <button>6</button>
-                        <button>7</button>
-                        <button>8</button>
-                        <button>9</button>
-                        <button>Next</button>
-                    </div>
+                <div class="footer">
+                    <span></span>
+                    <div class="index-button"></div>
                 </div>
+                <div id="error"></div>
             </div>
         </div>
     </div>
+    <script>
+        const logOut = document.getElementById('a-logout')
+        logOut.addEventListener('click', function() {
+            localStorage.removeItem('currentLogin')
+        })
+
+        const btnLogOut = document.getElementById('logout')
+        btnLogOut.addEventListener('click', function() {
+            localStorage.removeItem('currentLogin')
+            window.location.href = '../index.html'
+        })
+
+        let dataTransaction = []
+        let originalDataTransaction = []
+        let arrayLength = 0
+        let tableSize = 5
+        let startIndex = 1
+        let endIndex = 0
+        let currentIndex = 1
+        let maxIndex = 0
+
+        async function preloadData() {
+            try {
+                const url = "https://raw.githubusercontent.com/mdavindarinaldy/fgo24-node-datasource/refs/heads/main/data-users.json"
+                const res = await fetch(url)
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+                const data = await res.json()
+                originalDataTransaction = data.results || [];
+                dataTransaction = [...originalDataTransaction]
+                arrayLength = dataTransaction.length
+                maxIndex = Math.floor(arrayLength / tableSize)
+                if (arrayLength % tableSize > 0) {
+                    maxIndex++
+                }
+                displayIndexButtons()
+            } catch (error) {
+                console.error('Error fetching data:', error)
+                $('#error').text('Error loading data')
+                $('.footer>span').text('No entries available')
+            }
+        }
+
+        function displayIndexButtons() {
+            $(".index-button>button").remove()
+            $(".index-button").append('<button class="prev-btn">Previous</button>')
+            for (let i = 1; i <= maxIndex; i++) {
+                $(".index-button").append(`<button index="${i}">${i}</button>`)
+            }
+            $(".index-button").append('<button class="next-btn">Next</button>')
+
+            $('.prev-btn').on('click', function () {
+                if (currentIndex > 1) {
+                    currentIndex--
+                    highlightIndexButton()
+                }
+            })
+            $('.next-btn').on('click', function () {
+                if (currentIndex < maxIndex) {
+                    currentIndex++
+                    highlightIndexButton()
+                }
+            })
+            $('.index-button>button[index]').on('click', function () {
+                currentIndex = parseInt($(this).attr('index'))
+                highlightIndexButton()
+            })
+
+            highlightIndexButton()
+        }
+
+        function highlightIndexButton() {
+            startIndex = ((currentIndex - 1) * tableSize) + 1
+            endIndex = startIndex + tableSize - 1
+            if (endIndex > arrayLength) {
+                endIndex = arrayLength
+            }
+            $(".footer>span").text(`Showing ${startIndex} to ${endIndex} of ${arrayLength} entries`)
+            $(".index-button>button").removeClass('active')
+            $(`.index-button>button[index="${currentIndex}"]`).addClass('active')
+            displayRows()
+        }
+        
+        function displayRows() {
+            $(".table>table>tbody").empty()
+            let tabStart = startIndex - 1
+            let tabEnd = Math.min(endIndex, arrayLength)
+
+            for (let i = tabStart; i < tabEnd; i++) {
+                let user = dataTransaction[i]
+
+                let tr = $('<tr>');
+                tr.append($('<td>').append($('<img>').attr('src', user.picture.medium).attr('alt', 'profile')))
+                tr.append($('<td>').text(`${user.name.first} ${user.name.last}`))
+                tr.append($('<td>').text(user.phone))
+                tr.append(
+                    $('<td>')
+                        .addClass(user.transaction === 'transfer' ? 'green' : 'red')
+                        .text(`${user.transaction === 'transfer' ? '+' : '-'}Rp${user.nominal}`)
+                )
+                tr.append(
+                    $('<td>').append(
+                        $('<button>').addClass('favorite-btn').html('&#9733;').on('click', function () {
+                            $(this).toggleClass('favorited')
+                        })
+                    )
+                )
+                $('.table>table>tbody').append(tr)
+            }
+        }
+
+        $('#form').on('submit', function (event) {
+            event.preventDefault()
+            const searchTerm = $('#searchInput').val().trim().toLowerCase()
+            $('#error').text('')
+
+            if (searchTerm === '') {
+                dataTransaction = [...originalDataTransaction]
+            } else {
+                dataTransaction = originalDataTransaction.filter(user =>
+                    `${user.name.first} ${user.name.last}`.toLowerCase().includes(searchTerm)
+                )
+            }
+
+            arrayLength = dataTransaction.length
+            maxIndex = Math.floor(arrayLength / tableSize)
+            if (arrayLength % tableSize > 0) {
+                maxIndex++;
+            }
+
+            if (arrayLength === 0) {
+                $('#error').text('No transactions found')
+                $('.footer>span').text('Showing 0 to 0 of 0 entries')
+                $(".table>table>tbody").empty()
+                $(".index-button").empty()
+                return
+            }
+
+            currentIndex = 1
+            displayIndexButtons()
+        });
+
+        preloadData()
+    </script>
 </body>
 </html>
