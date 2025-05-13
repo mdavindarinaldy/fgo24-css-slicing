@@ -387,6 +387,11 @@
             displayRows(filteredData)
         })
 
+        $('tbody').on('click', function(event) {
+            event.preventDefault()
+            window.location.href = './transfer-detail.html'
+        })
+
         preloadData()
     </script>
 </body>
