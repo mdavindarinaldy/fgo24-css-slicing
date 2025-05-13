@@ -290,6 +290,9 @@
                 font-size: 8px;
                 gap: 3px;
             }
+            nav>button:nth-child(2) {
+                font-size: 8px;
+            }
             div.main>nav>button:last-child {
                 display: none;
             }
@@ -317,12 +320,15 @@
             }
             div.content>div.modal>div {
                 width: 90%;
-                height: 70%;
+                height: fit-content;
             }
             div.content>div.modal>div:first-child>div:nth-child(2)>img {
-                width: 270px;
-                height: 200px;
+                width: 40svw;
+                height: 30svw;
             }
+        }
+        button:hover {
+            cursor: pointer;
         }
     </style>
 </head>
@@ -338,21 +344,21 @@
                 <span>Ghaluh Wizard</span>
             </div>
             <img src="../assets/ghaluh.png" alt="foto-profile">
-            <button class="dropdown-btn"><img src="../assets/down.png" alt="icon-dropdown"></button>
+            <button class="dropdown-btn" type="button"><img src="../assets/down.png" alt="icon-dropdown"></button>
             <div class="dropdown-content">
                 <a href="./edit-profile.html"><img src="../assets/two-user.png" alt="profile-icon" class="prof">Profile</a>
-                <a href="#" style="color:#D00000"><img src="../assets/logout.png" alt="icon-logout">Keluar</a>
+                <a href="../index.html" id="a-logout" style="color:#D00000"><img src="../assets/logout.png" alt="icon-logout">Keluar</a>
             </div>
         </div>
     </header>
     <div class="main">
         <nav>
-            <button onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
-            <button><img src="../assets/send-white.png" alt="icon-transfer" class="tf">Transfer</button>
-            <button onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
-            <button onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
-            <button onclick="window.location.href='edit-profile.html'"><img src="../assets/two-user.png" alt="icon-two-user" class="pf">Profile</button>
-            <button><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
+            <button type="button" onclick="window.location.href='dashboard.html'"><img src="../assets/dashboard-black.png" alt="icon-dashboard" class="db">Dashboard</button>
+            <button type="button"><img src="../assets/send-white.png" alt="icon-transfer" class="tf">Transfer</button>
+            <button type="button" onclick="window.location.href='history-transaction.html'"><img src="../assets/history.png" alt="icon-history" class="ht">History</button>
+            <button type="button" onclick="window.location.href='top-up.html'"><img src="../assets/upload.png" alt="icon-upload" class="tu">Top Up</button>
+            <button type="button" onclick="window.location.href='edit-profile.html'"><img src="../assets/two-user.png" alt="icon-two-user" class="pf">Profile</button>
+            <button type="button" id="logout"><img src="../assets/logout.png" alt="icon-logout">Keluar</button>
         </nav>
         <div class="content">
             <div>
@@ -403,18 +409,30 @@
                 </div>
                 <div>
                     <img src="../assets/money-bill.png" alt="money-icon">
-                    <input type="text" placeholder="Enter Nominal Transfer">
+                    <input type="text" placeholder="Enter Nominal Transfer" id="nominal">
                 </div>
                 <div class="sub">
                     <span>Notes</span>
                     <span>You can add some notes for this transfer such as payment coffee or something</span>
                 </div>
                 <div>
-                    <input type="text" placeholder="Enter Some Notes">
+                    <input type="text" placeholder="Enter Some Notes" id="notes">
                 </div>
                 <button>Submit & Transfer</button>
             </div>
         </div>
     </div>
+    <script>
+        const logOut = document.getElementById('a-logout')
+        logOut.addEventListener('click', function() {
+            localStorage.removeItem('currentLogin')
+        })
+
+        const btnLogOut = document.getElementById('logout')
+        btnLogOut.addEventListener('click', function() {
+            localStorage.removeItem('currentLogin')
+            window.location.href = '../index.html'
+        })
+    </script>
 </body>
 </html>
