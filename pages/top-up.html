@@ -279,6 +279,9 @@
             div.main>div.content>div>div:last-child, div.content>div>div>div.sub-total, div.sub-total>div, hr#break, button#submit-payment {
                 width: 100%;
             }
+            nav>button:nth-child(4) {
+                font-size: 8px;
+            }
         }
         button:hover, input[type=radio] {
             cursor: pointer;
@@ -338,7 +341,7 @@
                             <span>Type the amount you want to transfer to your e-wallet account</span>
                             <div class="amount">
                                 <img src="../assets/money-bill.png" alt="icon-dompet">
-                                <input type="text" placeholder="Enter Nominal Transfer">
+                                <input type="text" placeholder="Enter Nominal Transfer" id="nominal">
                             </div>
                         </div>
                         <div class="sub">
